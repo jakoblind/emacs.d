@@ -47,6 +47,11 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
+set wrap
+set textwidth=79
+set formatoptions=qrn1
+set colorcolumn=85
+
 " highlight non text chars
 highlight NonText guifg=#4a4a59
 
