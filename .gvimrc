@@ -1,4 +1,4 @@
-set guifont=Monaco:h13
+set guifont=Andale\ Mono:h14
 set guioptions-=T  " remove toolbar
 
 set stal=2
