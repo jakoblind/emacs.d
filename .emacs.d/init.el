@@ -30,6 +30,8 @@
    expand-region
    yasnippet
    auto-complete
+   ace-jump-mode
+   browse-kill-ring
 ))
 
 (defun install-wanted-packages ()
@@ -90,6 +92,11 @@
 (require 'paredit)
 (require 'expand-region)
 
+;;from magnars
+(define-key global-map (kbd "C-;") 'ace-jump-mode)
+(global-set-key (kbd "C-x C-y") 'browse-kill-ring)
+
+
 ;;jakobs functions
 (global-set-key (kbd "C-<up>") 'er/expand-region)
 (global-set-key (kbd "C-<down>") 'er/contract-region)
@@ -101,6 +108,8 @@
 (global-set-key (kbd "M-<down>") (kbd "M->"))
 (global-set-key (kbd "M-<backspace>") 'kill-whole-line)
 (global-set-key (kbd "S-<return>") (kbd "C-e <return>"))
+(global-set-key (kbd "M-S-<up>") (kbd "C-a C-k C-k <up> C-y <up>"))
+(global-set-key (kbd "M-S-<down>") (kbd "C-a C-k C-k <down> C-y <up>"))
 
 (defun duplicate-line()
   (interactive)
@@ -117,3 +126,6 @@
 (global-set-key (kbd "M-c") (kbd "M-w"))
 (global-set-key (kbd "M-v") (kbd "C-y"))
 (global-set-key (kbd "M-z") (kbd "C-_"))
+(global-set-key (kbd "M-w") (kbd "C-x k"))
+(global-set-key (kbd "M-f") (kbd "C-s"))
+(global-set-key (kbd "M-a") (kbd "C-x h"))
