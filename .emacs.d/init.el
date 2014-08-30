@@ -40,6 +40,8 @@
 
 ;;; Appearance
 
+(setq visible-bell t)
+
 ;; Highlight current line
 (global-hl-line-mode 1)
 
@@ -57,6 +59,7 @@
  '(
    projectile
    js2-mode
+   js2-refactor
    color-theme
    autopair
    expand-region
@@ -70,6 +73,7 @@
    flx
    flx-ido
    magit
+   multiple-cursors
 ))
 
 (defun install-wanted-packages ()
@@ -132,10 +136,16 @@
 (require 'paredit)
 (require 'expand-region)
 (require 'autopair)
+(require 'js2-refactor)
+(require 'multiple-cursors)
 (projectile-global-mode)
 (autopair-global-mode) ;; enable autopair in all buffers
 
-;;from magnars
+;;multi cursor
+(global-set-key (kbd "C-g") 'mc/mark-next-word-like-this)
+;(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+;(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
 (define-key global-map (kbd "C-;") 'ace-jump-mode)
 (global-set-key (kbd "C-x C-y") 'browse-kill-ring)
 
@@ -149,6 +159,7 @@
 ;;; jakobs functions
 ;;TODO
 ; fix scrolling
+; mulitple cursors sux
 
 ;; file navigation
 (global-set-key (kbd "M-o") 'projectile-find-file)
@@ -156,6 +167,7 @@
 (global-set-key (kbd "M-b") 'ido-switch-buffer)
 
 
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 ;; code navigation
 (delete-selection-mode 1)
 
