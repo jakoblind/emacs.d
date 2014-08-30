@@ -1,8 +1,12 @@
-;;; I prefer cmd key for meta
+; MAC KEY BINDINGS
+; META: cmd key
+; CTRL: ctrl key
+; SUPER: option key
 (setq mac-option-key-is-meta nil
       mac-command-key-is-meta t
       mac-command-modifier 'meta
       mac-option-modifier 'none)
+(setq mac-option-modifier 'super)
 
 (setq user-full-name "Jakob Lind")
 (setq user-mail-address "karl.jakob.lind@gmail.com")
