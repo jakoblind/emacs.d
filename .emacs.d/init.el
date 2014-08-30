@@ -140,16 +140,6 @@
 		      (delete-region begin end)))
     (kill-whole-line arg)))
 
-(defun duplicate-line()
-  (interactive)
-  (move-beginning-of-line 1)
-  (kill-line)
-  (yank)
-  (open-line 1)
-  (next-line 1)
-  (yank)
-)
-
 (global-set-key (kbd "M-e") 'smex)
 (global-set-key (kbd "M-d") 'duplicate-line)
 (global-set-key (kbd "M-f") (kbd "C-s"))
