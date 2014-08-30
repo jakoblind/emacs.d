@@ -136,9 +136,12 @@
   (next-line 1)
   (yank)
 )
+
+(global-set-key (kbd "M-e") 'smex)
 (global-set-key (kbd "M-d") 'duplicate-line)
+(global-set-key (kbd "M-f") (kbd "C-s"))
 (global-set-key (kbd "M-s") 'save-buffer)
-;(global-set-key (kbd "M-x") (kbd "C-w"))
+(global-set-key (kbd "M-x") (kbd "C-w"))
 (global-set-key (kbd "M-c") (kbd "M-w"))
 (global-set-key (kbd "M-v") (kbd "C-y"))
 (global-set-key (kbd "M-z") (kbd "C-_"))
