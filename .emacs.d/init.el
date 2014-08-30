@@ -114,6 +114,7 @@
 
 
 ;;jakobs functions
+(delete-selection-mode 1)
 (global-set-key (kbd "C-<up>") 'er/expand-region)
 (global-set-key (kbd "C-<down>") 'er/contract-region)
 (global-set-key (kbd "s-<down>") 'er/contract-region)
@@ -122,6 +123,7 @@
 (global-set-key (kbd "s-<right>") (kbd "C-<right>"))
 (global-set-key (kbd "s-S-<left>") (kbd "C-S-<left>"))
 (global-set-key (kbd "s-S-<right>") (kbd "C-S-<right>"))
+(global-set-key (kbd "s-<backspace>") (kbd "C-<backspace>"))
 
 (global-set-key (kbd "M-S-<left>") (kbd "C-S-a"))
 (global-set-key (kbd "M-S-<right>") (kbd "C-S-e"))
@@ -129,10 +131,14 @@
 (global-set-key (kbd "M-<right>") (kbd "C-e"))
 (global-set-key (kbd "M-<up>") (kbd "M-<"))
 (global-set-key (kbd "M-<down>") (kbd "M->"))
-(global-set-key (kbd "M-<backspace>") 'kill-whole-line)
+(global-set-key (kbd "M-<backspace>") 'delete-line)
 (global-set-key (kbd "S-<return>") (kbd "C-e <return>"))
-(global-set-key (kbd "M-S-<up>") (kbd "C-a C-k C-k <up> C-y <up>"))
-(global-set-key (kbd "M-S-<down>") (kbd "C-a C-k C-k <down> C-y <up>"))
+
+(defun delete-line (&optional arg)
+  (interactive "P")
+  (flet ((kill-region (begin end)
+		      (delete-region begin end)))
+    (kill-whole-line arg)))
 
 (defun duplicate-line()
   (interactive)
@@ -148,10 +154,47 @@
 (global-set-key (kbd "M-d") 'duplicate-line)
 (global-set-key (kbd "M-f") (kbd "C-s"))
 (global-set-key (kbd "M-s") 'save-buffer)
-(global-set-key (kbd "M-x") (kbd "C-w"))
-(global-set-key (kbd "M-c") (kbd "M-w"))
-(global-set-key (kbd "M-v") (kbd "C-y"))
+(global-set-key (kbd "M-x") 'kill-region)
+(global-set-key (kbd "M-c") 'kill-ring-save)
+(global-set-key (kbd "M-v") 'yank)
 (global-set-key (kbd "M-z") (kbd "C-_"))
 ;(global-set-key (kbd "M-w") (kbd "C-X k"))
 (global-set-key (kbd "M-f") (kbd "C-s"))
 (global-set-key (kbd "M-a") (kbd "C-x h"))
+
+;;moving text
+(defun move-text-internal (arg)
+   (cond
+    ((and mark-active transient-mark-mode)
+     (if (> (point) (mark))
+	    (exchange-point-and-mark))
+     (let ((column (current-column))
+	      (text (delete-and-extract-region (point) (mark))))
+       (forward-line arg)
+       (move-to-column column t)
+       (set-mark (point))
+       (insert text)
+       (exchange-point-and-mark)
+       (setq deactivate-mark nil)))
+    (t
+     (beginning-of-line)
+     (when (or (> arg 0) (not (bobp)))
+       (forward-line)
+       (when (or (< arg 0) (not (eobp)))
+	    (transpose-lines arg))
+       (forward-line -1)))))
+
+(defun move-text-down (arg)
+   "Move region (transient-mark-mode active) or current line
+  arg lines down."
+   (interactive "*p")
+   (move-text-internal arg))
+
+(defun move-text-up (arg)
+   "Move region (transient-mark-mode active) or current line
+  arg lines up."
+   (interactive "*p")
+   (move-text-internal (- arg)))
+
+(global-set-key (kbd "M-S-<down>") 'move-text-down)
+(global-set-key (kbd "M-S-<up>") 'move-text-up)
