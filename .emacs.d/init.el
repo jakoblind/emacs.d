@@ -145,6 +145,6 @@
 (global-set-key (kbd "M-c") (kbd "M-w"))
 (global-set-key (kbd "M-v") (kbd "C-y"))
 (global-set-key (kbd "M-z") (kbd "C-_"))
-(global-set-key (kbd "M-w") (kbd "C-x k"))
+;(global-set-key (kbd "M-w") (kbd "C-X k"))
 (global-set-key (kbd "M-f") (kbd "C-s"))
 (global-set-key (kbd "M-a") (kbd "C-x h"))
