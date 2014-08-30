@@ -55,6 +55,7 @@
 (setq
  wanted-packages
  '(
+   projectile
    js2-mode
    color-theme
    autopair
@@ -66,6 +67,7 @@
    paredit
    smex
    ido
+   flx-ido
 ))
 
 (defun install-wanted-packages ()
@@ -105,8 +107,10 @@
 (ac-set-trigger-key "TAB")
 (ac-set-trigger-key "<tab>")
 
+
 (require 'ido)
-    (ido-mode t)
+(require 'flx-ido)
+(ido-mode t)
 
  ;; Display ido results vertically, rather than horizontally
   (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
@@ -126,15 +130,33 @@
 (require 'paredit)
 (require 'expand-region)
 (require 'autopair)
+(projectile-global-mode)
 (autopair-global-mode) ;; enable autopair in all buffers
 
 ;;from magnars
 (define-key global-map (kbd "C-;") 'ace-jump-mode)
 (global-set-key (kbd "C-x C-y") 'browse-kill-ring)
 
+;(load-file "~/cedet-1.1/common/cedet.el")
+;(global-ede-mode 1)                      ; Enable the Project management system
+;(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
+;(global-srecode-minor-mode 1)            ; Enable template insertion menu
+;(require 'ecb)
 
-;;jakobs functions
+
+;;; jakobs functions
+;;TODO
+; fix scrolling
+
+;; file navigation
+(global-set-key (kbd "M-o") 'projectile-find-file)
+(global-set-key (kbd "M-i") 'projectile-display-buffer)
+(global-set-key (kbd "M-b") 'ido-switch-buffer)
+
+
+;; code navigation
 (delete-selection-mode 1)
+
 (global-set-key (kbd "C-<up>") 'er/expand-region)
 (global-set-key (kbd "C-<down>") 'er/contract-region)
 (global-set-key (kbd "s-<down>") 'er/contract-region)
@@ -185,6 +207,8 @@
 ;(global-set-key (kbd "M-w") (kbd "C-X k"))
 (global-set-key (kbd "M-f") (kbd "C-s"))
 (global-set-key (kbd "M-a") (kbd "C-x h"))
+(global-set-key (kbd "M-q") (kbd "C-x C-c"))
+(global-set-key (kbd "M-l") 'goto-line-with-feedback)
 
 ;;moving text
 (defun move-text-internal (arg)
