@@ -38,6 +38,9 @@
    auto-complete
    ace-jump-mode
    browse-kill-ring
+   paredit
+   smex
+   ido
 ))
 
 (defun install-wanted-packages ()
