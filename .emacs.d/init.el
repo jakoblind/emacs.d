@@ -116,6 +116,13 @@
 ;;jakobs functions
 (global-set-key (kbd "C-<up>") 'er/expand-region)
 (global-set-key (kbd "C-<down>") 'er/contract-region)
+(global-set-key (kbd "s-<down>") 'er/contract-region)
+(global-set-key (kbd "s-<up>") 'er/expand-region)
+(global-set-key (kbd "s-<left>") (kbd "C-<left>"))
+(global-set-key (kbd "s-<right>") (kbd "C-<right>"))
+(global-set-key (kbd "s-S-<left>") (kbd "C-S-<left>"))
+(global-set-key (kbd "s-S-<right>") (kbd "C-S-<right>"))
+
 (global-set-key (kbd "M-S-<left>") (kbd "C-S-a"))
 (global-set-key (kbd "M-S-<right>") (kbd "C-S-e"))
 (global-set-key (kbd "M-<left>") (kbd "C-a"))
