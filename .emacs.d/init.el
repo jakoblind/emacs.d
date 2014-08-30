@@ -41,6 +41,7 @@
    paredit
    smex
    ido
+   autopair
 ))
 
 (defun install-wanted-packages ()
@@ -100,6 +101,8 @@
 
 (require 'paredit)
 (require 'expand-region)
+(require 'autopair)
+(autopair-global-mode) ;; enable autopair in all buffers
 
 ;;from magnars
 (define-key global-map (kbd "C-;") 'ace-jump-mode)
