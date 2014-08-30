@@ -67,7 +67,9 @@
    paredit
    smex
    ido
+   flx
    flx-ido
+   magit
 ))
 
 (defun install-wanted-packages ()
