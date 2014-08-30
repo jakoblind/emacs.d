@@ -1,3 +1,10 @@
+;; Turn off mouse interface early in startup to avoid momentary display
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+
+;; No splash screen please ... jeez
+;(setq inhibit-startup-message t)
+
 ; MAC KEY BINDINGS
 ; META: cmd key
 ; CTRL: ctrl key
@@ -12,7 +19,6 @@
 (setq user-mail-address "karl.jakob.lind@gmail.com")
 
 (fset 'yes-or-no-p 'y-or-n-p)
-(show-paren-mode t)
 
 (setq-default highlight-tabs t)
 (setq-default show-trailing-whitespace t)
@@ -32,9 +38,24 @@
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
+;;; Appearance
+
+;; Highlight current line
+(global-hl-line-mode 1)
+
+(show-paren-mode t)
+
+(when window-system
+  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+  (tooltip-mode -1)
+  (blink-cursor-mode -1))
+
+
+;;; PACKAGE STUFF
 (setq
  wanted-packages
  '(
+   js2-mode
    color-theme
    autopair
    expand-region
@@ -45,7 +66,6 @@
    paredit
    smex
    ido
-   autopair
 ))
 
 (defun install-wanted-packages ()
@@ -77,7 +97,7 @@
 ;;; auto complete mod
 ;;; should be loaded after yasnippet so that they can work together
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20140824.1658/dict/")
+(add-to-list 'ac-dictionary-directories (concat user-emacs-directory "/elpa/auto-complete-20140824.1658/dict/"))
 (ac-config-default)
 ;;; set the trigger key so that it can work together with yasnippet on tab key,
 ;;; if the word exists in yasnippet, pressing tab will cause yasnippet to
@@ -139,6 +159,20 @@
   (flet ((kill-region (begin end)
 		      (delete-region begin end)))
     (kill-whole-line arg)))
+
+
+(autoload 'copy-from-above-command "misc"
+    "Copy characters from previous nonblank line, starting just above point.
+
+  \(fn &optional arg)"
+    'interactive)
+
+ (defun duplicate-line ()
+   (interactive)
+   (forward-line 1)
+   (open-line 1)
+   (copy-from-above-command))
+
 
 (global-set-key (kbd "M-e") 'smex)
 (global-set-key (kbd "M-d") 'duplicate-line)
