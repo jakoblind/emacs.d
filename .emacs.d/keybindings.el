@@ -11,9 +11,16 @@
 
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+;; Window navigation
+(global-set-key (kbd "M-1") (kbd "C-x 1"))
+(global-set-key (kbd "M-2") (kbd "C-x 2"))
+(global-set-key (kbd "M-3") (kbd "C-x 3"))
+(global-set-key (kbd "M-4") (kbd "C-x 0"))
+(global-set-key (kbd "C-<tab>") 'other-window)
+;(windmove-up)
+
 ;; code navigation
-
-
 (global-set-key (kbd "C-<up>") 'er/expand-region)
 (global-set-key (kbd "C-<down>") 'er/contract-region)
 (global-set-key (kbd "s-<down>") 'er/contract-region)

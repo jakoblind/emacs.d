@@ -20,6 +20,7 @@
    magit
    multiple-cursors
    undo-tree
+   smooth-scrolling
 ))
 
 (defun install-wanted-packages ()

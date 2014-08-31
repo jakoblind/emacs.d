@@ -20,6 +20,11 @@
 
 (add-to-list 'load-path user-emacs-directory)
 
+(setq fill-column 80)
+
+;; Don't break lines for me, please
+(setq-default truncate-lines t)
+
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (setq-default highlight-tabs t)
@@ -101,6 +106,7 @@
 (require 'js2-refactor)
 (require 'multiple-cursors)
 (require 'undo-tree)
+(require 'smooth-scrolling)
 (global-undo-tree-mode)
 (projectile-global-mode)
 (autopair-global-mode) ;; enable autopair in all buffers
