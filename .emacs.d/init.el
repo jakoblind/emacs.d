@@ -74,6 +74,7 @@
    flx-ido
    magit
    multiple-cursors
+   undo-tree
 ))
 
 (defun install-wanted-packages ()
@@ -138,6 +139,8 @@
 (require 'autopair)
 (require 'js2-refactor)
 (require 'multiple-cursors)
+(require 'undo-tree)
+(global-undo-tree-mode)
 (projectile-global-mode)
 (autopair-global-mode) ;; enable autopair in all buffers
 
@@ -162,6 +165,7 @@
 ; mulitple cursors sux
 ; move line should be able to move many selected lines
 ; fix undo
+
 
 ;; file navigation
 (global-set-key (kbd "M-o") 'projectile-find-file)
