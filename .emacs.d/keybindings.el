@@ -2,7 +2,7 @@
 ;;TODO
 ; fix scrolling
 ; mulitple cursors sux
-; move line should be able to move many selected lines
+; duplicate should be able to duplicate the exact selection
 
 ;; file navigation
 (global-set-key (kbd "M-o") 'projectile-find-file)
@@ -54,6 +54,27 @@
   \(fn &optional arg)"
     'interactive)
 
+
+(defun duplicate-current-line-or-region (arg)
+  "Duplicates the current line or region ARG times.
+If there's no region, the current line will be duplicated. However, if
+there's a region, all lines that region covers will be duplicated."
+  (interactive "p")
+  (let (beg end (origin (point)))
+    (if (and mark-active (> (point) (mark)))
+	(exchange-point-and-mark))
+    (setq beg (line-beginning-position))
+    (if mark-active
+	(exchange-point-and-mark))
+    (setq end (line-end-position))
+    (let ((region (buffer-substring-no-properties beg end)))
+      (dotimes (i arg)
+	(goto-char end)
+	(newline)
+	(insert region)
+	(setq end (point)))
+      (goto-char (+ origin (* (length region) arg) arg)))))
+
  (defun duplicate-line ()
    (interactive)
    (forward-line 1)
@@ -62,7 +83,7 @@
 
 
 (global-set-key (kbd "M-e") 'smex)
-(global-set-key (kbd "M-d") 'duplicate-line)
+(global-set-key (kbd "M-d") 'duplicate-current-line-or-region)
 (global-set-key (kbd "M-s") 'save-buffer)
 (global-set-key (kbd "M-x") 'kill-region)
 (global-set-key (kbd "M-c") 'kill-ring-save)
