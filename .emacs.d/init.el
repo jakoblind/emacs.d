@@ -18,6 +18,8 @@
 (setq user-full-name "Jakob Lind")
 (setq user-mail-address "karl.jakob.lind@gmail.com")
 
+(add-to-list 'load-path user-emacs-directory)
+
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (setq-default highlight-tabs t)
@@ -114,7 +116,6 @@
 (ac-set-trigger-key "TAB")
 (ac-set-trigger-key "<tab>")
 
-
 (require 'ido)
 (require 'flx-ido)
 (ido-mode t)
@@ -144,6 +145,7 @@
 (projectile-global-mode)
 (autopair-global-mode) ;; enable autopair in all buffers
 
+
 ;;multi cursor
 (global-set-key (kbd "C-g") 'mc/mark-next-word-like-this)
 ;(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
@@ -159,112 +161,4 @@
 ;(require 'ecb)
 
 
-;;; jakobs functions
-;;TODO
-; fix scrolling
-; mulitple cursors sux
-; move line should be able to move many selected lines
-; fix undo
-
-
-;; file navigation
-(global-set-key (kbd "M-o") 'projectile-find-file)
-(global-set-key (kbd "M-i") 'projectile-display-buffer)
-(global-set-key (kbd "M-b") 'ido-switch-buffer)
-
-
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-;; code navigation
-(delete-selection-mode 1)
-
-(global-set-key (kbd "C-<up>") 'er/expand-region)
-(global-set-key (kbd "C-<down>") 'er/contract-region)
-(global-set-key (kbd "s-<down>") 'er/contract-region)
-(global-set-key (kbd "s-<up>") 'er/expand-region)
-(global-set-key (kbd "s-<left>") (kbd "C-<left>"))
-(global-set-key (kbd "s-<right>") (kbd "C-<right>"))
-(global-set-key (kbd "s-S-<left>") (kbd "C-S-<left>"))
-(global-set-key (kbd "s-S-<right>") (kbd "C-S-<right>"))
-(global-set-key (kbd "s-<backspace>") (kbd "C-<backspace>"))
-
-(global-set-key (kbd "M-S-<left>") (kbd "C-S-a"))
-(global-set-key (kbd "M-S-<right>") (kbd "C-S-e"))
-(global-set-key (kbd "M-<left>") (kbd "C-a"))
-(global-set-key (kbd "M-<right>") (kbd "C-e"))
-(global-set-key (kbd "M-<up>") (kbd "M-<"))
-(global-set-key (kbd "M-<down>") (kbd "M->"))
-(global-set-key (kbd "M-<backspace>") 'delete-line)
-(global-set-key (kbd "S-<return>") (kbd "C-e <return>"))
-(global-set-key (kbd "M-<return>") (kbd "C-a <return> C-p"))
-
-(defun delete-line (&optional arg)
-  (interactive "P")
-  (flet ((kill-region (begin end)
-		      (delete-region begin end)))
-    (kill-whole-line arg)))
-
-
-(autoload 'copy-from-above-command "misc"
-    "Copy characters from previous nonblank line, starting just above point.
-
-  \(fn &optional arg)"
-    'interactive)
-
- (defun duplicate-line ()
-   (interactive)
-   (forward-line 1)
-   (open-line 1)
-   (copy-from-above-command))
-
-
-(global-set-key (kbd "M-e") 'smex)
-(global-set-key (kbd "M-d") 'duplicate-line)
-(global-set-key (kbd "M-s") 'save-buffer)
-(global-set-key (kbd "M-x") 'kill-region)
-(global-set-key (kbd "M-c") 'kill-ring-save)
-(global-set-key (kbd "M-v") 'yank)
-(global-set-key (kbd "M-z") (kbd "C-_"))
-(global-set-key (kbd "M-w") (kbd "C-X k"))
-(global-set-key (kbd "M-a") (kbd "C-x h"))
-(global-set-key (kbd "M-q") (kbd "C-x C-c"))
-(global-set-key (kbd "M-l") 'goto-line-with-feedback)
-
-(global-set-key (kbd "M-f")  'isearch-forward)
-(define-key isearch-mode-map (kbd "M-f") 'isearch-repeat-forward)
-
-;;moving text
-(defun move-text-internal (arg)
-   (cond
-    ((and mark-active transient-mark-mode)
-     (if (> (point) (mark))
-	    (exchange-point-and-mark))
-     (let ((column (current-column))
-	      (text (delete-and-extract-region (point) (mark))))
-       (forward-line arg)
-       (move-to-column column t)
-       (set-mark (point))
-       (insert text)
-       (exchange-point-and-mark)
-       (setq deactivate-mark nil)))
-    (t
-     (beginning-of-line)
-     (when (or (> arg 0) (not (bobp)))
-       (forward-line)
-       (when (or (< arg 0) (not (eobp)))
-	    (transpose-lines arg))
-       (forward-line -1)))))
-
-(defun move-text-down (arg)
-   "Move region (transient-mark-mode active) or current line
-  arg lines down."
-   (interactive "*p")
-   (move-text-internal arg))
-
-(defun move-text-up (arg)
-   "Move region (transient-mark-mode active) or current line
-  arg lines up."
-   (interactive "*p")
-   (move-text-internal (- arg)))
-
-(global-set-key (kbd "M-S-<down>") 'move-text-down)
-(global-set-key (kbd "M-S-<up>") 'move-text-up)
+(require 'keybindings)
