@@ -160,6 +160,8 @@
 ;;TODO
 ; fix scrolling
 ; mulitple cursors sux
+; move line should be able to move many selected lines
+; fix undo
 
 ;; file navigation
 (global-set-key (kbd "M-o") 'projectile-find-file)
@@ -189,6 +191,7 @@
 (global-set-key (kbd "M-<down>") (kbd "M->"))
 (global-set-key (kbd "M-<backspace>") 'delete-line)
 (global-set-key (kbd "S-<return>") (kbd "C-e <return>"))
+(global-set-key (kbd "M-<return>") (kbd "C-a <return> C-p"))
 
 (defun delete-line (&optional arg)
   (interactive "P")
@@ -212,17 +215,18 @@
 
 (global-set-key (kbd "M-e") 'smex)
 (global-set-key (kbd "M-d") 'duplicate-line)
-(global-set-key (kbd "M-f") (kbd "C-s"))
 (global-set-key (kbd "M-s") 'save-buffer)
 (global-set-key (kbd "M-x") 'kill-region)
 (global-set-key (kbd "M-c") 'kill-ring-save)
 (global-set-key (kbd "M-v") 'yank)
 (global-set-key (kbd "M-z") (kbd "C-_"))
-;(global-set-key (kbd "M-w") (kbd "C-X k"))
-(global-set-key (kbd "M-f") (kbd "C-s"))
+(global-set-key (kbd "M-w") (kbd "C-X k"))
 (global-set-key (kbd "M-a") (kbd "C-x h"))
 (global-set-key (kbd "M-q") (kbd "C-x C-c"))
 (global-set-key (kbd "M-l") 'goto-line-with-feedback)
+
+(global-set-key (kbd "M-f")  'isearch-forward)
+(define-key isearch-mode-map (kbd "M-f") 'isearch-repeat-forward)
 
 ;;moving text
 (defun move-text-internal (arg)
