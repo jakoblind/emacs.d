@@ -19,6 +19,8 @@
 (global-set-key (kbd "M-3") (kbd "C-x 3"))
 (global-set-key (kbd "M-4") (kbd "C-x 0"))
 (global-set-key (kbd "C-<tab>") 'other-window)
+(global-set-key (kbd "M-`") 'winner-undo)
+(global-set-key (kbd "M-~") 'winner-redo)
 
 
 ;(windmove-up)
