@@ -12,7 +12,7 @@
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 ;; code navigation
-(delete-selection-mode 1)
+
 
 (global-set-key (kbd "C-<up>") 'er/expand-region)
 (global-set-key (kbd "C-<down>") 'er/contract-region)
