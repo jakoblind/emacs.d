@@ -4,6 +4,7 @@
 ; mulitple cursors sux
 ; duplicate should be able to duplicate the exact selection
 ; c-<backspace> should not put content in killbuffer
+; when opening a new window, move focus to it
 
 ;; file navigation
 (global-set-key (kbd "M-o") 'projectile-find-file)
