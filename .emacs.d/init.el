@@ -99,7 +99,8 @@
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-
+;; possible to undo/redo window splitting
+(winner-mode 1)
 (require 'paredit)
 (require 'expand-region)
 (require 'autopair)
@@ -107,13 +108,14 @@
 (require 'multiple-cursors)
 (require 'undo-tree)
 (require 'smooth-scrolling)
+(require 'clojure-mode)
+(require 'clj-refactor)
 (global-undo-tree-mode)
 (projectile-global-mode)
 (autopair-global-mode) ;; enable autopair in all buffers
 
-
 ;;multi cursor
-(global-set-key (kbd "C-g") 'mc/mark-next-word-like-this)
+;(global-set-key (kbd "C-g") 'mc/mark-next-word-like-this)
 ;(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 ;(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 

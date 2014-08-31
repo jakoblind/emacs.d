@@ -3,6 +3,7 @@
 ; fix scrolling
 ; mulitple cursors sux
 ; duplicate should be able to duplicate the exact selection
+; c-<backspace> should not put content in killbuffer
 
 ;; file navigation
 (global-set-key (kbd "M-o") 'projectile-find-file)
@@ -18,6 +19,8 @@
 (global-set-key (kbd "M-3") (kbd "C-x 3"))
 (global-set-key (kbd "M-4") (kbd "C-x 0"))
 (global-set-key (kbd "C-<tab>") 'other-window)
+
+
 ;(windmove-up)
 
 ;; code navigation

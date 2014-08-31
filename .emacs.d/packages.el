@@ -5,6 +5,8 @@
    projectile
    js2-mode
    js2-refactor
+   clojure-mode
+   clj-refactor
    color-theme
    autopair
    expand-region
