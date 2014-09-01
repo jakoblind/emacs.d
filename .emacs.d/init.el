@@ -110,6 +110,12 @@
 (require 'smooth-scrolling)
 (require 'clojure-mode)
 (require 'clj-refactor)
+(add-hook 'clojure-mode-hook (lambda ()
+			       (clj-refactor-mode 1)
+			       ;; insert keybinding setup here
+			       (cljr-add-keybindings-with-prefix "C-c C-c")
+			       ))
+
 (global-undo-tree-mode)
 (projectile-global-mode)
 (autopair-global-mode) ;; enable autopair in all buffers
