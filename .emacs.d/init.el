@@ -110,6 +110,8 @@
 (require 'smooth-scrolling)
 (require 'clojure-mode)
 (require 'clj-refactor)
+(require 'cider)
+
 (add-hook 'clojure-mode-hook (lambda ()
 			       (clj-refactor-mode 1)
 			       ;; insert keybinding setup here

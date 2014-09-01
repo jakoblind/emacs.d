@@ -23,6 +23,7 @@
    multiple-cursors
    undo-tree
    smooth-scrolling
+   cider
 ))
 
 (defun install-wanted-packages ()
