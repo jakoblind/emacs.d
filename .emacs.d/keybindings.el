@@ -106,6 +106,14 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key (kbd "M-w") (kbd "C-X k"))
 (global-set-key (kbd "M-a") (kbd "C-x h"))
 (global-set-key (kbd "M-q") (kbd "C-x C-c"))
+(defun goto-line-with-feedback ()
+  "Show line numbers temporarily, while prompting for the line number input"
+  (interactive)
+  (unwind-protect
+      (progn
+	(linum-mode 1)
+	(call-interactively 'goto-line))
+    (linum-mode -1)))
 (global-set-key (kbd "M-l") 'goto-line-with-feedback)
 
 (global-set-key (kbd "M-f")  'isearch-forward)
