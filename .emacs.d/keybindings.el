@@ -27,14 +27,18 @@
 ;(windmove-up)
 
 ;; code navigation
+
+; move camelcase
+(global-subword-mode 1)
+
 (global-set-key (kbd "C-<up>") 'er/expand-region)
 (global-set-key (kbd "C-<down>") 'er/contract-region)
 (global-set-key (kbd "s-<down>") 'er/contract-region)
 (global-set-key (kbd "s-<up>") 'er/expand-region)
-(global-set-key (kbd "s-<left>") (kbd "C-<left>"))
-(global-set-key (kbd "s-<right>") (kbd "C-<right>"))
-(global-set-key (kbd "s-S-<left>") (kbd "C-S-<left>"))
-(global-set-key (kbd "s-S-<right>") (kbd "C-S-<right>"))
+(global-set-key (kbd "s-<left>") 'backward-word)
+(global-set-key (kbd "s-<right>") 'forward-word)
+(global-set-key (kbd "C-<left>") 'backward-word)
+(global-set-key (kbd "C-<right>") 'forward-word)
 (global-set-key (kbd "s-<backspace>") (kbd "C-<backspace>"))
 
 (global-set-key (kbd "M-S-<left>") (kbd "C-S-a"))
