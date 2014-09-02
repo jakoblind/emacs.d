@@ -118,6 +118,27 @@
 			       (cljr-add-keybindings-with-prefix "C-c C-c")
 			       ))
 
+(add-hook 'clojure-mode-hook (lambda () (paredit-mode 1)))
+(add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
+(add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode 1)))
+
+(defvar my-nasty-paredit-keybindings-remappings
+  '(("M-s"         "s-s"         paredit-splice-sexp)
+    ("M-r"          "s-r"      paredit-splice-sexp-killing-backward)
+    ("M-<up>"      "s-<up>"      paredit-splice-sexp-killing-backward)
+    ("M-<down>"    "s-<down>"    paredit-splice-sexp-killing-forward)
+    ("C-<right>"   "s-<right>"   paredit-forward-slurp-sexp)
+    ("C-<left>"    "s-<left>"    paredit-forward-barf-sexp)
+    ("C-M-<left>"  "s-S-<left>"  paredit-backward-slurp-sexp)
+    ("C-M-<right>" "s-S-<right>" paredit-backward-barf-sexp)))
+
+(--each my-nasty-paredit-keybindings-remappings
+  (let ((original (car it))
+	(replacement (cadr it))
+	(command (car (last it))))
+    (define-key paredit-mode-map (read-kbd-macro original) nil)
+    (define-key paredit-mode-map (read-kbd-macro replacement) command)))
+
 (global-undo-tree-mode)
 (projectile-global-mode)
 (autopair-global-mode) ;; enable autopair in all buffers
@@ -129,12 +150,6 @@
 
 (define-key global-map (kbd "C-;") 'ace-jump-mode)
 (global-set-key (kbd "C-x C-y") 'browse-kill-ring)
-
-;(load-file "~/cedet-1.1/common/cedet.el")
-;(global-ede-mode 1)                      ; Enable the Project management system
-;(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
-;(global-srecode-minor-mode 1)            ; Enable template insertion menu
-;(require 'ecb)
 
 
 (require 'keybindings)
