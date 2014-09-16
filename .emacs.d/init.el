@@ -113,10 +113,10 @@
 (require 'cider)
 
 (add-hook 'clojure-mode-hook (lambda ()
-			       (clj-refactor-mode 1)
-			       ;; insert keybinding setup here
-			       (cljr-add-keybindings-with-prefix "C-c C-c")
-			       ))
+                               (clj-refactor-mode 1)
+                               ;; insert keybinding setup here
+                               (cljr-add-keybindings-with-prefix "C-c C-c")
+                               ))
 
 (add-hook 'clojure-mode-hook (lambda () (paredit-mode 1)))
 (add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
@@ -134,10 +134,17 @@
 
 (--each my-nasty-paredit-keybindings-remappings
   (let ((original (car it))
-	(replacement (cadr it))
-	(command (car (last it))))
+        (replacement (cadr it))
+        (command (car (last it))))
     (define-key paredit-mode-map (read-kbd-macro original) nil)
     (define-key paredit-mode-map (read-kbd-macro replacement) command)))
+
+(define-key paredit-mode-map (kbd "C-<right>") 'paredit-forward)
+(define-key paredit-mode-map (kbd "C-<left>") 'paredit-backward)
+(define-key paredit-mode-map (kbd "C-<up>") 'paredit-forward-up)
+(define-key paredit-mode-map (kbd "C-<down>") 'paredit-forward-down)
+(define-key paredit-mode-map (kbd "C-s-<up>") 'paredit-backward-up)
+(define-key paredit-mode-map (kbd "C-s-<down>") 'paredit-backward-down)
 
 (global-undo-tree-mode)
 (projectile-global-mode)
