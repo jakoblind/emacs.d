@@ -2,6 +2,9 @@
 (setq
  wanted-packages
  '(
+   rainbow-delimiters
+   color-theme-tango
+   less-css-mode
    projectile
    js2-mode
    js2-refactor

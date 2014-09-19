@@ -46,11 +46,12 @@
 (prefer-coding-system 'utf-8)
 
 ;;; Appearance
-
 (setq visible-bell t)
 
 ;; Highlight current line
-(global-hl-line-mode 1)
+;;;(global-hl-line-mode 1)
+
+(load-theme 'tango-dark)
 
 (show-paren-mode t)
 
@@ -111,6 +112,9 @@
 (require 'clojure-mode)
 (require 'clj-refactor)
 (require 'cider)
+
+(when (require 'rainbow-delimiters nil 'noerror)
+  (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode))
 
 (add-hook 'clojure-mode-hook (lambda ()
                                (clj-refactor-mode 1)
