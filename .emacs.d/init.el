@@ -113,9 +113,9 @@
 (require 'clojure-mode)
 (require 'clj-refactor)
 (require 'cider)
+(require 'rainbow-delimiters)
 
-(when (require 'rainbow-delimiters nil 'noerror)
-  (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode))
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (add-hook 'clojure-mode-hook (lambda ()
 			       (clj-refactor-mode 1)
@@ -156,9 +156,9 @@
 (autopair-global-mode) ;; enable autopair in all buffers
 
 ;;multi cursor
-;(global-set-key (kbd "C-g") 'mc/mark-next-word-like-this)
-;(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-;(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-g") 'mc/mark-next-word-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 (define-key global-map (kbd "C-;") 'ace-jump-mode)
 (global-set-key (kbd "C-x C-y") 'browse-kill-ring)
