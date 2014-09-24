@@ -51,8 +51,6 @@
 ;; Highlight current line
 ;;;(global-hl-line-mode 1)
 
-(load-theme 'tango-dark)
-
 (show-paren-mode t)
 
 (delete-selection-mode 1)
