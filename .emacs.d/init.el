@@ -156,8 +156,8 @@
 (autopair-global-mode) ;; enable autopair in all buffers
 
 ;;multi cursor
-(global-set-key (kbd "C-g") 'mc/mark-next-word-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "M-g") 'mc/mark-next-word-like-this)
+(global-set-key (kbd "M-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 (define-key global-map (kbd "C-;") 'ace-jump-mode)
