@@ -46,6 +46,9 @@
 (prefer-coding-system 'utf-8)
 
 ;;; Appearance
+(when (eq system-type "cygwin")
+  (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 130))
+
 (setq visible-bell t)
 
 ;; Highlight current line
