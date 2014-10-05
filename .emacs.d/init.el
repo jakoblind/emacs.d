@@ -45,6 +45,8 @@
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
+ (global-auto-revert-mode 1)
+
 ;;; Appearance
 (setq visible-bell t)
 
@@ -149,6 +151,8 @@
 (define-key paredit-mode-map (kbd "C-<down>") 'paredit-forward-down)
 (define-key paredit-mode-map (kbd "C-s-<up>") 'paredit-backward-up)
 (define-key paredit-mode-map (kbd "C-s-<down>") 'paredit-backward-down)
+
+(define-key paredit-mode-map (kbd "s-e") 'cider-eval-last-sexp)
 
 (global-undo-tree-mode)
 (projectile-global-mode)
