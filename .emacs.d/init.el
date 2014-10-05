@@ -48,12 +48,13 @@
  (global-auto-revert-mode 1)
 
 ;;; Appearance
+(when (eq system-type "cygwin")
+  (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 130))
+
 (setq visible-bell t)
 
 ;; Highlight current line
 ;;;(global-hl-line-mode 1)
-
-(load-theme 'tango-dark)
 
 (show-paren-mode t)
 
@@ -114,15 +115,15 @@
 (require 'clojure-mode)
 (require 'clj-refactor)
 (require 'cider)
+(require 'rainbow-delimiters)
 
-(when (require 'rainbow-delimiters nil 'noerror)
-  (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode))
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (add-hook 'clojure-mode-hook (lambda ()
-                               (clj-refactor-mode 1)
-                               ;; insert keybinding setup here
-                               (cljr-add-keybindings-with-prefix "C-c C-c")
-                               ))
+			       (clj-refactor-mode 1)
+			       ;; insert keybinding setup here
+			       (cljr-add-keybindings-with-prefix "C-c C-c")
+			       ))
 
 (add-hook 'clojure-mode-hook (lambda () (paredit-mode 1)))
 (add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
@@ -140,17 +141,17 @@
 
 (--each my-nasty-paredit-keybindings-remappings
   (let ((original (car it))
-        (replacement (cadr it))
-        (command (car (last it))))
+	(replacement (cadr it))
+	(command (car (last it))))
     (define-key paredit-mode-map (read-kbd-macro original) nil)
     (define-key paredit-mode-map (read-kbd-macro replacement) command)))
 
-(define-key paredit-mode-map (kbd "C-<right>") 'paredit-forward)
-(define-key paredit-mode-map (kbd "C-<left>") 'paredit-backward)
-(define-key paredit-mode-map (kbd "C-<up>") 'paredit-forward-up)
-(define-key paredit-mode-map (kbd "C-<down>") 'paredit-forward-down)
-(define-key paredit-mode-map (kbd "C-s-<up>") 'paredit-backward-up)
-(define-key paredit-mode-map (kbd "C-s-<down>") 'paredit-backward-down)
+;(define-key paredit-mode-map (kbd "C-<right>") 'paredit-forward)
+;(define-key paredit-mode-map (kbd "C-<left>") 'paredit-backward)
+;(define-key paredit-mode-map (kbd "C-<up>") 'paredit-forward-up)
+;(define-key paredit-mode-map (kbd "C-<down>") 'paredit-forward-down)
+;(define-key paredit-mode-map (kbd "C-s-<up>") 'paredit-backward-up)
+;(define-key paredit-mode-map (kbd "C-s-<down>") 'paredit-backward-down)
 
 (define-key paredit-mode-map (kbd "s-e") 'cider-eval-last-sexp)
 
@@ -159,9 +160,9 @@
 (autopair-global-mode) ;; enable autopair in all buffers
 
 ;;multi cursor
-;(global-set-key (kbd "C-g") 'mc/mark-next-word-like-this)
-;(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-;(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "M-g") 'mc/mark-next-word-like-this)
+(global-set-key (kbd "M-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 (define-key global-map (kbd "C-;") 'ace-jump-mode)
 (global-set-key (kbd "C-x C-y") 'browse-kill-ring)
