@@ -56,6 +56,8 @@
 ;; Highlight current line
 ;;;(global-hl-line-mode 1)
 
+(load-theme 'tango-dark t)
+
 (show-paren-mode t)
 
 (delete-selection-mode 1)
@@ -120,10 +122,10 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (add-hook 'clojure-mode-hook (lambda ()
-			       (clj-refactor-mode 1)
-			       ;; insert keybinding setup here
-			       (cljr-add-keybindings-with-prefix "C-c C-c")
-			       ))
+                               (clj-refactor-mode 1)
+                               ;; insert keybinding setup here
+                               (cljr-add-keybindings-with-prefix "C-c C-c")
+                               ))
 
 (add-hook 'clojure-mode-hook (lambda () (paredit-mode 1)))
 (add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
@@ -141,8 +143,8 @@
 
 (--each my-nasty-paredit-keybindings-remappings
   (let ((original (car it))
-	(replacement (cadr it))
-	(command (car (last it))))
+        (replacement (cadr it))
+        (command (car (last it))))
     (define-key paredit-mode-map (read-kbd-macro original) nil)
     (define-key paredit-mode-map (read-kbd-macro replacement) command)))
 
