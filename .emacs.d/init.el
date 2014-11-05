@@ -67,6 +67,9 @@
   (tooltip-mode -1)
   (blink-cursor-mode -1))
 
+
+(setq debug-on-error t)
+
 ;;; install all packages
 (require 'packages)
 (global-set-key (kbd "C-x o") 'switch-window)
@@ -105,6 +108,8 @@
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
+(setq ns-pop-up-frames nil)
+
 ;; possible to undo/redo window splitting
 (winner-mode 1)
 (require 'paredit)
@@ -118,6 +123,10 @@
 (require 'clj-refactor)
 (require 'cider)
 (require 'rainbow-delimiters)
+(require 'scala-mode2)
+(require 'ensime)
+
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
@@ -171,3 +180,16 @@
 
 
 (require 'keybindings)
+(require 'sudo-save)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(sbt:program-name "/usr/local/bin/sbt"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
