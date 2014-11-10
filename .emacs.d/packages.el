@@ -27,8 +27,8 @@
    undo-tree
    smooth-scrolling
    cider
-   scala-mode2
-   sbt-mode
+   exec-path-from-shell
+   ensime
 ))
 
 (defun install-wanted-packages ()

@@ -1,4 +1,4 @@
-;; Turn off mouse interface early in startup to avoid momentary display
+;; Turnen off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
@@ -111,7 +111,11 @@
 (setq ns-pop-up-frames nil)
 
 ;; possible to undo/redo window splitting
+
 (winner-mode 1)
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
 (require 'paredit)
 (require 'expand-region)
 (require 'autopair)
@@ -123,8 +127,9 @@
 (require 'clj-refactor)
 (require 'cider)
 (require 'rainbow-delimiters)
-(require 'scala-mode2)
+;;(require 'scala-mode2)
 (require 'ensime)
+
 
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
