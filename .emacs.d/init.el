@@ -56,7 +56,7 @@
 ;; Highlight current line
 ;;;(global-hl-line-mode 1)
 
-(load-theme 'tango-dark t)
+(load-theme 'brin t)
 
 (show-paren-mode t)
 
@@ -136,10 +136,10 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (add-hook 'clojure-mode-hook (lambda ()
-                               (clj-refactor-mode 1)
-                               ;; insert keybinding setup here
-                               (cljr-add-keybindings-with-prefix "C-c C-c")
-                               ))
+			       (clj-refactor-mode 1)
+			       ;; insert keybinding setup here
+			       (cljr-add-keybindings-with-prefix "C-c C-c")
+			       ))
 
 (add-hook 'clojure-mode-hook (lambda () (paredit-mode 1)))
 (add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
@@ -157,8 +157,8 @@
 
 (--each my-nasty-paredit-keybindings-remappings
   (let ((original (car it))
-        (replacement (cadr it))
-        (command (car (last it))))
+	(replacement (cadr it))
+	(command (car (last it))))
     (define-key paredit-mode-map (read-kbd-macro original) nil)
     (define-key paredit-mode-map (read-kbd-macro replacement) command)))
 
@@ -191,6 +191,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("7bde52fdac7ac54d00f3d4c559f2f7aa899311655e7eb20ec5491f3b5c533fe8" "1a85b8ade3d7cf76897b338ff3b20409cb5a5fbed4e45c6f38c98eee7b025ad4" "e9776d12e4ccb722a2a732c6e80423331bcb93f02e089ba2a4b02e85de1cf00e" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "49eea2857afb24808915643b1b5bd093eefb35424c758f502e98a03d0d3df4b1" "2b5aa66b7d5be41b18cc67f3286ae664134b95ccc4a86c9339c886dfd736132d" default)))
  '(sbt:program-name "/usr/local/bin/sbt"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

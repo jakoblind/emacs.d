@@ -3,7 +3,7 @@
  wanted-packages
  '(
    rainbow-delimiters
-   color-theme-tango
+   sublime-themes
    less-css-mode
    projectile
    js2-mode
@@ -40,13 +40,13 @@
     (package-initialize)
     (let ((need-refresh nil))
       (mapc (lambda (package-name)
-          (unless (package-installed-p package-name)
-        (set 'need-refresh t))) wanted-packages)
+	  (unless (package-installed-p package-name)
+	(set 'need-refresh t))) wanted-packages)
       (if need-refresh
-        (package-refresh-contents)))
+	(package-refresh-contents)))
     (mapc (lambda (package-name)
-        (unless (package-installed-p package-name)
-          (package-install package-name))) wanted-packages)
+	(unless (package-installed-p package-name)
+	  (package-install package-name))) wanted-packages)
     )
 (install-wanted-packages)
 
