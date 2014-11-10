@@ -56,7 +56,6 @@
 ;; Highlight current line
 ;;;(global-hl-line-mode 1)
 
-(load-theme 'brin t)
 
 (show-paren-mode t)
 
@@ -146,14 +145,14 @@
 (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode 1)))
 
 (defvar my-nasty-paredit-keybindings-remappings
-  '(("M-s"         "s-s"         paredit-splice-sexp)
-    ("M-r"          "s-r"      paredit-splice-sexp-killing-backward)
-    ("M-<up>"      "s-<up>"      paredit-splice-sexp-killing-backward)
-    ("M-<down>"    "s-<down>"    paredit-splice-sexp-killing-forward)
-    ("C-<right>"   "s-<right>"   paredit-forward-slurp-sexp)
-    ("C-<left>"    "s-<left>"    paredit-forward-barf-sexp)
-    ("C-M-<left>"  "s-S-<left>"  paredit-backward-slurp-sexp)
-    ("C-M-<right>" "s-S-<right>" paredit-backward-barf-sexp)))
+  '(("M-s"         "C-s"         paredit-splice-sexp)
+    ("M-r"          "C-r"      paredit-splice-sexp-killing-backward)
+    ("M-<up>"      "C-<up>"      paredit-splice-sexp-killing-backward)
+    ("M-<down>"    "C-<down>"    paredit-splice-sexp-killing-forward)
+    ("C-<right>"   "C-<right>"   paredit-forward-slurp-sexp)
+    ("C-<left>"    "C-<left>"    paredit-forward-barf-sexp)
+    ("C-M-<left>"  "C-S-<left>"  paredit-backward-slurp-sexp)
+    ("C-M-<right>" "C-S-<right>" paredit-backward-barf-sexp)))
 
 (--each my-nasty-paredit-keybindings-remappings
   (let ((original (car it))
@@ -199,3 +198,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(load-theme 'brin t)
