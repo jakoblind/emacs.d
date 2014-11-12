@@ -38,29 +38,30 @@ around the text moved over."
   (interactive "^p")
   (forward-symbol arg))
 
+(defun move-end-of-line-shift-aware (arg)
+  "`forward-symbol', with shift-select-mode support.
+Shift + this command's key extends/activates the region
+around the text moved over."
+  (interactive "^p")
+  (move-end-of-line arg))
+
 (global-set-key (kbd "C-<up>") 'er/expand-region)
 (global-set-key (kbd "C-<down>") 'er/contract-region)
-(global-set-key (kbd "s-<down>") 'er/contract-region)
+(global-set-key (kbd "s-<down>") 'er/contractm-region)
 (global-set-key (kbd "s-<up>") 'er/expand-region)
 (global-set-key (kbd "s-<left>") (lambda () (interactive "^")
 				  (forward-symbol-shift-aware -1)))
 (global-set-key (kbd "s-<right>") 'forward-symbol-shift-aware)
-;(global-set-key (kbd "s-S-<left>") (kbd "C-S-<left>"))
-;(global-set-key (kbd "s-S-<right>") (kbd "C-S-<right>"))
-;(global-set-key (kbd "s-<left>") 'backward-word)
-;(global-set-key (kbd "s-<right>") 'forward-word)
-;(global-set-key (kbd "C-<left>") 'backward-word)
-;(global-set-key (kbd "C-<right>") 'forward-word)
 
 ;;; TODO: this should not put stuff in undo-buffer
 (global-set-key (kbd "s-<backspace>") (kbd "C-<backspace>"))
 
-(global-set-key (kbd "M-S-<left>") (kbd "C-S-a"))
-(global-set-key (kbd "M-S-<right>") (kbd "C-S-e"))
 (global-set-key (kbd "M-<left>") 'smarter-move-beginning-of-line)
-(global-set-key (kbd "M-<right>") (kbd "C-e"))
-(global-set-key (kbd "M-<up>") (kbd "M-<"))
+(global-set-key (kbd "M-<right>") 'move-end-of-line-shift-aware)
+(global-set-key (kbd "M-<up>") 'beginning-of-buffer)
 (global-set-key (kbd "M-<down>") (kbd "M->"))
+(global-set-key (kbd "M-s-<down>") 'scroll-up-command)
+(global-set-key (kbd "M-s-<up>") 'scroll-down-command)
 (global-set-key (kbd "M-<backspace>") 'delete-line)
 (global-set-key (kbd "S-<return>") (kbd "C-e <return>"))
 (global-set-key (kbd "M-<return>") (kbd "C-a <return> C-p"))
@@ -138,9 +139,9 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key (kbd "M-x") 'kill-region)
 (global-set-key (kbd "M-c") 'kill-ring-save)
 (global-set-key (kbd "M-v") 'yank)
-(global-set-key (kbd "M-z") (kbd "C-_"))
-(global-set-key (kbd "M-w") (kbd "C-X k"))
-(global-set-key (kbd "M-a") (kbd "C-x h"))
+(global-set-key (kbd "M-z") 'undo-tree-undo)
+(global-set-key (kbd "M-w") 'ido-kill-buffer)
+(global-set-key (kbd "M-a") 'mark-whole-buffer)
 (global-set-key (kbd "M-q") (kbd "C-x C-c"))
 (defun goto-line-with-feedback ()
   "Show line numbers temporarily, while prompting for the line number input"
