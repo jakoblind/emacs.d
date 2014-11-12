@@ -137,38 +137,22 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (add-hook 'clojure-mode-hook (lambda ()
-                               (clj-refactor-mode 1)
-                               ;; insert keybinding setup here
-                               (cljr-add-keybindings-with-prefix "C-c C-c")
-                               ))
+			       (clj-refactor-mode 1)
+			       ;; insert keybinding setup here
+			       (cljr-add-keybindings-with-prefix "C-c C-c")
+			       ))
 
 (add-hook 'clojure-mode-hook (lambda () (paredit-mode 1)))
 (add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
 (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode 1)))
 
-(defvar my-nasty-paredit-keybindings-remappings
-  '(("M-s"         "C-s"         paredit-splice-sexp)
-    ("M-r"          "C-r"      paredit-splice-sexp-killing-backward)
-    ("M-<up>"      "C-<up>"      paredit-splice-sexp-killing-backward)
-    ("M-<down>"    "C-<down>"    paredit-splice-sexp-killing-forward)
-    ("C-<right>"   "C-<right>"   paredit-forward-slurp-sexp)
-    ("C-<left>"    "C-<left>"    paredit-forward-barf-sexp)
-    ("C-M-<left>"  "C-S-<left>"  paredit-backward-slurp-sexp)
-    ("C-M-<right>" "C-S-<right>" paredit-backward-barf-sexp)))
 
-(--each my-nasty-paredit-keybindings-remappings
-  (let ((original (car it))
-        (replacement (cadr it))
-        (command (car (last it))))
-    (define-key paredit-mode-map (read-kbd-macro original) nil)
-    (define-key paredit-mode-map (read-kbd-macro replacement) command)))
-
-;(define-key paredit-mode-map (kbd "C-<right>") 'paredit-forward)
-;(define-key paredit-mode-map (kbd "C-<left>") 'paredit-backward)
-;(define-key paredit-mode-map (kbd "C-<up>") 'paredit-forward-up)
-;(define-key paredit-mode-map (kbd "C-<down>") 'paredit-forward-down)
-;(define-key paredit-mode-map (kbd "C-s-<up>") 'paredit-backward-up)
-;(define-key paredit-mode-map (kbd "C-s-<down>") 'paredit-backward-down)
+(define-key paredit-mode-map (kbd "s-<left>") nil)
+(define-key paredit-mode-map (kbd "s-<right>") nil)
+(define-key paredit-mode-map (kbd "s-S-<left>") nil)
+(define-key paredit-mode-map (kbd "s-S-<right>") nil)
+(define-key paredit-mode-map (kbd "M-q") nil)
+(define-key paredit-mode-map (kbd "M-s") nil)
 
 (define-key paredit-mode-map (kbd "s-e") 'cider-eval-last-sexp)
 
