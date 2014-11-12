@@ -48,6 +48,8 @@
  (global-auto-revert-mode 1)
 
 ;;; Appearance
+
+
 (when (eq system-type "cygwin")
   (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 130))
 
@@ -173,7 +175,6 @@ by using nxml's indentation rules."
 (define-key paredit-mode-map (kbd "M-q") nil)
 (define-key paredit-mode-map (kbd "M-s") nil)
 (define-key paredit-mode-map (kbd "M-d") nil)
-
 (define-key paredit-mode-map (kbd "<enter>") 'paredit-newline)
 
 (define-key paredit-mode-map (kbd "s-e") 'cider-eval-last-sexp)
@@ -181,6 +182,8 @@ by using nxml's indentation rules."
 (global-undo-tree-mode)
 (projectile-global-mode)
 (autopair-global-mode) ;; enable autopair in all buffers
+
+(load-theme 'brin t)
 
 ;;multi cursor
 (global-set-key (kbd "M-g") 'mc/mark-next-word-like-this)
@@ -206,4 +209,18 @@ by using nxml's indentation rules."
  ;; If there is more than one, they won't work right.
  )
 
-(load-theme 'brin t)
+(when window-system
+  (let (
+	(px (display-pixel-width))
+	(py (display-pixel-height))
+	(fx (frame-char-width))
+	(fy (frame-char-height))
+	tx ty
+	)
+    ;; Next formulas discovered empiric on Windows host with default font.
+    (setq tx (- (/ px fx) 7))
+    (setq ty (- (/ py fy) 4))
+    (setq initial-frame-alist '((top . 2) (left . 2)))
+    (add-to-list 'initial-frame-alist (cons 'width tx))
+    (add-to-list 'initial-frame-alist (cons 'height ty))
+    ) )
