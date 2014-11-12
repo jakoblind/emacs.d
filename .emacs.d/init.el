@@ -165,12 +165,16 @@ by using nxml's indentation rules."
 
 
 (define-key paredit-mode-map (kbd "s-<left>") nil)
+(define-key paredit-mode-map (kbd "M-<down>") nil)
+(define-key paredit-mode-map (kbd "M-<up>") nil)
 (define-key paredit-mode-map (kbd "s-<right>") nil)
 (define-key paredit-mode-map (kbd "s-S-<left>") nil)
 (define-key paredit-mode-map (kbd "s-S-<right>") nil)
 (define-key paredit-mode-map (kbd "M-q") nil)
 (define-key paredit-mode-map (kbd "M-s") nil)
 (define-key paredit-mode-map (kbd "M-d") nil)
+
+(define-key paredit-mode-map (kbd "<enter>") 'paredit-newline)
 
 (define-key paredit-mode-map (kbd "s-e") 'cider-eval-last-sexp)
 
@@ -180,7 +184,6 @@ by using nxml's indentation rules."
 
 ;;multi cursor
 (global-set-key (kbd "M-g") 'mc/mark-next-word-like-this)
-(global-set-key (kbd "M-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 (define-key global-map (kbd "C-;") 'ace-jump-mode)

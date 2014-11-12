@@ -51,6 +51,8 @@ around the text moved over."
 ;(global-set-key (kbd "s-<right>") 'forward-word)
 ;(global-set-key (kbd "C-<left>") 'backward-word)
 ;(global-set-key (kbd "C-<right>") 'forward-word)
+
+;;; TODO: this should not put stuff in undo-buffer
 (global-set-key (kbd "s-<backspace>") (kbd "C-<backspace>"))
 
 (global-set-key (kbd "M-S-<left>") (kbd "C-S-a"))
