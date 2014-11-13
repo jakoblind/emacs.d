@@ -53,8 +53,21 @@ around the text moved over."
 				  (forward-symbol-shift-aware -1)))
 (global-set-key (kbd "s-<right>") 'forward-symbol-shift-aware)
 
-;;; TODO: this should not put stuff in undo-buffer
-(global-set-key (kbd "s-<backspace>") (kbd "C-<backspace>"))
+(defun delete-word-no-kill (arg)
+  "Delete characters forward until encountering the end of a word.
+With argument, do this that many times.
+This command does not push erased text to kill-ring."
+  (interactive "p")
+  (delete-region (point) (progn (forward-word arg) (point))))
+
+(defun backward-delete-word-no-kill (arg)
+  "Delete characters backward until encountering the beginning of a word.
+With argument, do this that many times.
+This command does not push erased text to kill-ring."
+  (interactive "p")
+  (delete-word-no-kill (- arg)))
+
+(global-set-key (kbd "s-<backspace>") 'backward-delete-word-no-kill)
 
 (global-set-key (kbd "M-<left>") 'smarter-move-beginning-of-line)
 (global-set-key (kbd "M-<right>") 'move-end-of-line-shift-aware)
@@ -153,11 +166,12 @@ there's a region, all lines that region covers will be duplicated."
     (linum-mode -1)))
 (global-set-key (kbd "M-l") 'goto-line-with-feedback)
 
+
 (global-set-key (kbd "M-f")  'isearch-forward)
-(define-key isearch-mode-map (kbd "<return>") 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "<down>") 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "<up>") 'isearch-repeat-backward)
-(define-key isearch-mode-map (kbd "<esc>") 'isearch-complete)
+(define-key isearch-mode-map (kbd "<return>") 'isearch-exit)
+(define-key isearch-mode-map (kbd "<esc>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "M-v") 'isearch-yank-pop)
 
 ; text
