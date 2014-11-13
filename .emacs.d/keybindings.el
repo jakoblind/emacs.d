@@ -156,6 +156,9 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key (kbd "M-w") 'ido-kill-buffer)
 (global-set-key (kbd "M-a") 'mark-whole-buffer)
 (global-set-key (kbd "M-q") (kbd "C-x C-c"))
+
+(global-set-key (kbd "M-h") 'highlight-symbol)
+
 (defun goto-line-with-feedback ()
   "Show line numbers temporarily, while prompting for the line number input"
   (interactive)

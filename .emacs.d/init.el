@@ -169,6 +169,8 @@ by using nxml's indentation rules."
 (add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
 (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode 1)))
 
+(add-hook 'prog-mode-hook 'highlight-symbol-mode)
+
 
 (define-key paredit-mode-map (kbd "s-<left>") nil)
 (define-key paredit-mode-map (kbd "M-<down>") nil)
@@ -179,7 +181,10 @@ by using nxml's indentation rules."
 (define-key paredit-mode-map (kbd "M-q") nil)
 (define-key paredit-mode-map (kbd "M-s") nil)
 (define-key paredit-mode-map (kbd "M-d") nil)
+(define-key paredit-mode-map (kbd "s-r") 'paredit-raise-sexp)
+(define-key paredit-mode-map (kbd "s-s") 'paredit-splice-sexp)
 (define-key paredit-mode-map (kbd "<return>") 'paredit-newline)
+(define-key paredit-mode-map (kbd "S-<return>") (kbd "C-e <return> <tab>"))
 
 (define-key paredit-mode-map (kbd "s-e") 'cider-eval-last-sexp)
 
@@ -188,6 +193,8 @@ by using nxml's indentation rules."
 (autopair-global-mode) ;; enable autopair in all buffers
 
 (load-theme 'brin t)
+
+(setq highlight-symbol-idle-delay 0)
 
 ;;multi cursor
 (global-set-key (kbd "M-g") 'mc/mark-next-word-like-this)
