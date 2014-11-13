@@ -179,7 +179,7 @@ by using nxml's indentation rules."
 (define-key paredit-mode-map (kbd "M-q") nil)
 (define-key paredit-mode-map (kbd "M-s") nil)
 (define-key paredit-mode-map (kbd "M-d") nil)
-(define-key paredit-mode-map (kbd "<enter>") 'paredit-newline)
+(define-key paredit-mode-map (kbd "<return>") 'paredit-newline)
 
 (define-key paredit-mode-map (kbd "s-e") 'cider-eval-last-sexp)
 
