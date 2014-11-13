@@ -129,6 +129,10 @@ by using nxml's indentation rules."
       (indent-region begin end))
     (message "Ah, much better!"))
 
+(defun pretty-print-json-region (start end)
+  (interactive "r")
+  (shell-command-on-region start end "python -m json.tool" nil (current-buffer) 1))
+
 
 (winner-mode 1)
 (when (memq window-system '(mac ns))
