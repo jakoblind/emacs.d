@@ -158,6 +158,7 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key (kbd "M-q") (kbd "C-x C-c"))
 
 (global-set-key (kbd "M-h") 'highlight-symbol)
+(global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
 
 (defun goto-line-with-feedback ()
   "Show line numbers temporarily, while prompting for the line number input"
