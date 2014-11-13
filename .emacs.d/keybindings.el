@@ -155,6 +155,7 @@ there's a region, all lines that region covers will be duplicated."
 
 (global-set-key (kbd "M-f")  'isearch-forward)
 (define-key isearch-mode-map (kbd "M-f") 'isearch-repeat-forward)
+(define-key isearch-mode-map (kbd "M-v") 'isearch-yank-pop)
 
 ;;moving text
 (defun move-text-internal (arg)
