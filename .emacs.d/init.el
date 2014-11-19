@@ -169,8 +169,6 @@ by using nxml's indentation rules."
 (add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
 (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode 1)))
 
-(add-hook 'prog-mode-hook 'highlight-symbol-mode)
-
 
 (define-key paredit-mode-map (kbd "s-<left>") nil)
 (define-key paredit-mode-map (kbd "M-<down>") nil)
