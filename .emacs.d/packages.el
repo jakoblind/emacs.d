@@ -29,7 +29,6 @@
    cider
    exec-path-from-shell
    ensime
-   highlight-mode
 ))
 
 (defun install-wanted-packages ()
