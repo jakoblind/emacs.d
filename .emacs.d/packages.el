@@ -29,6 +29,7 @@
    cider
    exec-path-from-shell
    ensime
+   ac-nrepl
 ))
 
 (defun install-wanted-packages ()
