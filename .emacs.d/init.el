@@ -151,16 +151,21 @@ by using nxml's indentation rules."
 (require 'rainbow-delimiters)
 (require 'scala-mode2)
 (require 'ensime)
-(require 'ac-nrepl)
+(require 'ac-cider)
 
-(add-hook 'clojure-mode-hook 'turn-on-eldoc-mode)
-(setq nrepl-popup-stacktraces nil)
-(add-to-list 'same-window-buffer-names "<em>nrepl</em>")
-
-(add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
-(add-hook 'cider-mode-hook 'ac-nrepl-setup)
+(add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+(add-hook 'cider-mode-hook 'ac-cider-setup)
+(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
 (eval-after-load "auto-complete"
-  '(add-to-list 'ac-modes 'cider-repl-mode))
+  '(add-to-list 'ac-modes 'cider-mode))
+
+(defun set-auto-complete-as-completion-at-point-function ()
+  (setq completion-at-point-functions '(auto-complete)))
+
+(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
+(add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function)
+
+
 
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
@@ -178,8 +183,9 @@ by using nxml's indentation rules."
 (add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
 (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode 1)))
 
+;;
 (eval-after-load "cider"
-  '(define-key cider-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc))
+  '(define-key cider-mode-map (kbd "C-c C-d") 'ac-cider-popup-doc))
 
 (define-key paredit-mode-map (kbd "s-<left>") nil)
 (define-key paredit-mode-map (kbd "M-<down>") nil)
