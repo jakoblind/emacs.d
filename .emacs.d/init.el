@@ -183,7 +183,6 @@ by using nxml's indentation rules."
 (add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
 (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode 1)))
 
-;;
 (eval-after-load "cider"
   '(define-key cider-mode-map (kbd "C-c C-d") 'ac-cider-popup-doc))
 

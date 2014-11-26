@@ -3,7 +3,6 @@
 ; fix scrolling
 ; mulitple cursors sux
 ; duplicate should be able to duplicate the exact selection
-; c-<backspace> should not put content in killbuffer
 ; when opening a new window, move focus to it
 
 ;; file navigation
@@ -15,6 +14,8 @@
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 (global-set-key (kbd "C-c C-i") (lambda() (interactive)(find-file "~/.emacs.d/init.el")))
+
+(global-set-key (kbd "C-c C-s") 'magit-status)
 
 ;; Window navigation
 (global-set-key (kbd "M-1") (kbd "C-x 1"))
