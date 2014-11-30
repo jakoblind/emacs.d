@@ -3,14 +3,12 @@
  wanted-packages
  '(
    rainbow-delimiters
-   sublime-themes
    less-css-mode
    projectile
    js2-mode
    js2-refactor
    clojure-mode
    clj-refactor
-   color-theme
    autopair
    expand-region
    yasnippet
@@ -27,18 +25,19 @@
    undo-tree
    smooth-scrolling
    cider
+   ac-cider
    exec-path-from-shell
    ensime
-   ac-cider
-   w3
+   noctilux-theme
 ))
 
 (defun install-wanted-packages ()
   "Install wanted packages according to a specific package manager"
     (require 'package)
-    ;(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+    (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
     (add-to-list 'package-archives '("melpa" . "http://melpa-stable.milkbox.net/packages/"))
-    ;(add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
+    (add-to-list 'package-archives '("melpa-snapshots" . "http://melpa.milkbox.net/packages/"))
+    (add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
     (package-initialize)
     (let ((need-refresh nil))
       (mapc (lambda (package-name)
