@@ -18,7 +18,8 @@
 (setq user-full-name "Jakob Lind")
 (setq user-mail-address "karl.jakob.lind@gmail.com")
 
-(add-to-list 'load-path user-emacs-directory)
+;(add-to-list 'load-path user-emacs-directory)
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
 (setq fill-column 80)
 
