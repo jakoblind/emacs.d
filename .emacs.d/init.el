@@ -154,6 +154,9 @@ by using nxml's indentation rules."
 (require 'ensime)
 (require 'ac-cider)
 
+(add-hook 'cider-mode-hook 'prettify-symbols-mode)
+(add-hook 'emacs-lisp-mode-hook  'prettify-symbols-mode)
+
 (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
 (add-hook 'cider-mode-hook 'ac-cider-setup)
 (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
