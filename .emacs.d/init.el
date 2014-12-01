@@ -139,6 +139,10 @@ by using nxml's indentation rules."
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
+
+(add-hook 'clojure-mode-hook 'prettify-symbols-mode)
+(add-hook 'emacs-lisp-mode-hook  'prettify-symbols-mode)
+
 (require 'paredit)
 (require 'expand-region)
 (require 'autopair)
@@ -153,9 +157,6 @@ by using nxml's indentation rules."
 (require 'scala-mode2)
 (require 'ensime)
 (require 'ac-cider)
-
-(add-hook 'cider-mode-hook 'prettify-symbols-mode)
-(add-hook 'emacs-lisp-mode-hook  'prettify-symbols-mode)
 
 (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
 (add-hook 'cider-mode-hook 'ac-cider-setup)
