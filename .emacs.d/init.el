@@ -206,6 +206,12 @@ by using nxml's indentation rules."
 
 (define-key paredit-mode-map (kbd "s-e") 'cider-eval-last-sexp)
 
+;; Save point position between sessions
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file (expand-file-name ".places" user-emacs-directory))
+
+
 (global-undo-tree-mode)
 (projectile-global-mode)
 (autopair-global-mode) ;; enable autopair in all buffers
