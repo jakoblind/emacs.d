@@ -215,6 +215,10 @@ by using nxml's indentation rules."
 	ad-do-it
       (fset 'one-window-p (symbol-function 'orig-one-window-p)))))
 
+(defadvice split-window (after move-point-to-new-window activate)
+  "Moves the point to the newly created window after splitting."
+  (other-window 1))
+
 
 ;; Save point position between sessions
 (require 'saveplace)
