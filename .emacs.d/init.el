@@ -139,7 +139,6 @@ by using nxml's indentation rules."
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-
 (add-hook 'clojure-mode-hook 'prettify-symbols-mode)
 (add-hook 'emacs-lisp-mode-hook  'prettify-symbols-mode)
 

@@ -76,6 +76,8 @@ This command does not push erased text to kill-ring."
 (global-set-key (kbd "M-<right>") 'move-end-of-line-shift-aware)
 (global-set-key (kbd "M-<up>") 'beginning-of-buffer)
 (global-set-key (kbd "M-<down>") (kbd "M->"))
+(global-set-key (kbd "C-s-<down>") (lambda () (interactive) (ignore-errors (next-line 5))))
+(global-set-key (kbd "C-s-<up>") (lambda () (interactive) (ignore-errors (previous-line 5))))
 (global-set-key (kbd "M-s-<down>") 'scroll-up-command)
 (global-set-key (kbd "M-s-<up>") 'scroll-down-command)
 (global-set-key (kbd "M-<backspace>") 'delete-line)
