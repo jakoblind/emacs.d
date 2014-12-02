@@ -218,7 +218,8 @@ there's a region, all lines that region covers will be duplicated."
    "Move region (transient-mark-mode active) or current line
   arg lines up."
    (interactive "*p")
-   (move-text-internal (- arg)))
+   (move-text-internal (- arg))
+   (previous-line))
 
 (global-set-key (kbd "M-S-<down>") 'move-text-down)
 (global-set-key (kbd "M-S-<up>") 'move-text-up)
