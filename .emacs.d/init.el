@@ -57,7 +57,7 @@
 (setq visible-bell t)
 
 ;; Highlight current line
-;;;(global-hl-line-mode 1)
+(global-hl-line-mode 1)
 
 
 (show-paren-mode t)
@@ -68,6 +68,7 @@
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
   (blink-cursor-mode -1))
+
 
 
 (setq debug-on-error t)
@@ -219,6 +220,8 @@ by using nxml's indentation rules."
   "Moves the point to the newly created window after splitting."
   (other-window 1))
 
+(require 'cursor-chg)
+(change-cursor-mode 0)
 
 ;; Save point position between sessions
 (require 'saveplace)

@@ -18,10 +18,10 @@
 (global-set-key (kbd "C-c C-s") 'magit-status)
 
 ;; Window navigation
-(global-set-key (kbd "M-1") (kbd "C-x 1"))
-(global-set-key (kbd "M-2") (kbd "C-x 2"))
-(global-set-key (kbd "M-3") (kbd "C-x 3"))
-(global-set-key (kbd "M-4") (kbd "C-x 0"))
+(global-set-key (kbd "M-1") (lambda () (interactive) (delete-other-windows)))
+(global-set-key (kbd "M-2") (lambda () (interactive) (split-window-below)))
+(global-set-key (kbd "M-3") (lambda () (interactive) (split-window-right)))
+(global-set-key (kbd "M-4") (lambda () (interactive) (delete-window)))
 (global-set-key (kbd "M-§") 'other-window)
 (global-set-key (kbd "M-`") 'winner-undo)
 (global-set-key (kbd "M-~") 'winner-redo)
