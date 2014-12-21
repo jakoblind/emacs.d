@@ -29,6 +29,7 @@
    exec-path-from-shell
    ensime
    noctilux-theme
+   cursor-chg
 ))
 
 (defun install-wanted-packages ()
