@@ -70,8 +70,8 @@
   (blink-cursor-mode -1))
 
 
-
-(setq debug-on-error t)
+;;this might be good to enable when debugging lisp
+(setq debug-on-error f)
 
 ;;; install all packages
 (require 'packages)

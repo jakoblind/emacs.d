@@ -50,7 +50,7 @@ around the text moved over."
 
 (global-set-key (kbd "C-<up>") 'er/expand-region)
 (global-set-key (kbd "C-<down>") 'er/contract-region)
-(global-set-key (kbd "s-<down>") 'er/contractm-region)
+(global-set-key (kbd "s-<down>") 'er/contract-region)
 (global-set-key (kbd "s-<up>") 'er/expand-region)
 (global-set-key (kbd "s-<left>") (lambda () (interactive "^")
 				  (forward-symbol-shift-aware -1)))
