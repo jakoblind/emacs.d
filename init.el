@@ -71,7 +71,7 @@
 
 
 ;;this might be good to enable when debugging lisp
-(setq debug-on-error f)
+;;(setq debug-on-error t)
 
 ;;; install all packages
 (require 'packages)
