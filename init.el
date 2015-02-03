@@ -146,6 +146,7 @@ by using nxml's indentation rules."
 (require 'paredit)
 (require 'expand-region)
 (require 'autopair)
+(require 'js2-mode)
 (require 'js2-refactor)
 (require 'multiple-cursors)
 (require 'undo-tree)
