@@ -23,6 +23,7 @@
 (global-set-key (kbd "M-3") (lambda () (interactive) (split-window-right)))
 (global-set-key (kbd "M-4") (lambda () (interactive) (delete-window)))
 (global-set-key (kbd "M-§") 'other-window)
+(global-set-key (kbd "C-<tab>") 'other-window)
 (global-set-key (kbd "M-`") 'winner-undo)
 (global-set-key (kbd "M-~") 'winner-redo)
 
