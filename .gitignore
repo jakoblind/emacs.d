@@ -3,3 +3,10 @@
 .emacs.d/ac-comphist.dat
 .emacs.d/.mc-lists.el
 .emacs.d/bookmarks
+.places
+ac0comphist.dat
+auto-save-list
+elpa
+ido.last
+projectile-bookmarks.eld
+smex-items
