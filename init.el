@@ -127,7 +127,7 @@ by using nxml's indentation rules."
       (nxml-mode)
       (goto-char begin)
       (while (search-forward-regexp "\>[ \\t]*\<" nil t)
-	(backward-char) (insert "\n"))
+        (backward-char) (insert "\n"))
       (indent-region begin end))
     (message "Ah, much better!"))
 
@@ -158,9 +158,14 @@ by using nxml's indentation rules."
 (require 'scala-mode2)
 (require 'ensime)
 (require 'ac-cider)
-(require 'editorconfig)
-(load "editorconfig")
+(require 'web-mode)
 
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+(defadvice web-mode-highlight-part (around tweak-jsx activate)
+  (if (equal web-mode-content-type "jsx")
+      (let ((web-mode-enable-part-face nil))
+        ad-do-it)
+    ad-do-it))
 (add-to-list 'auto-mode-alist '("\\.jsx$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 
@@ -185,10 +190,10 @@ by using nxml's indentation rules."
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (add-hook 'clojure-mode-hook (lambda ()
-			       (clj-refactor-mode 1)
-			       ;; insert keybinding setup here
-			       (cljr-add-keybindings-with-prefix "C-c C-c")
-			       ))
+                               (clj-refactor-mode 1)
+                               ;; insert keybinding setup here
+                               (cljr-add-keybindings-with-prefix "C-c C-c")
+                               ))
 
 (add-hook 'clojure-mode-hook (lambda () (paredit-mode 1)))
 (add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
@@ -219,7 +224,7 @@ by using nxml's indentation rules."
     (fset 'orig-one-window-p (symbol-function 'one-window-p))
     (fset 'one-window-p (lambda (&optional nomini all-frames) t))
     (unwind-protect
-	ad-do-it
+        ad-do-it
       (fset 'one-window-p (symbol-function 'orig-one-window-p)))))
 
 (defadvice split-window (after move-point-to-new-window activate)
@@ -239,26 +244,26 @@ by using nxml's indentation rules."
   "Rotate your windows"
   (interactive)
   (cond ((not (> (count-windows)1))
-	 (message "You can't rotate a single window!"))
-	(t
-	 (setq i 1)
-	 (setq numWindows (count-windows))
-	 (while  (< i numWindows)
-	   (let* (
-		  (w1 (elt (window-list) i))
-		  (w2 (elt (window-list) (+ (% i numWindows) 1)))
+         (message "You can't rotate a single window!"))
+        (t
+         (setq i 1)
+         (setq numWindows (count-windows))
+         (while  (< i numWindows)
+           (let* (
+                  (w1 (elt (window-list) i))
+                  (w2 (elt (window-list) (+ (% i numWindows) 1)))
 
-		  (b1 (window-buffer w1))
-		  (b2 (window-buffer w2))
+                  (b1 (window-buffer w1))
+                  (b2 (window-buffer w2))
 
-		  (s1 (window-start w1))
-		  (s2 (window-start w2))
-		  )
-	     (set-window-buffer w1  b2)
-	     (set-window-buffer w2 b1)
-	     (set-window-start w1 s2)
-	     (set-window-start w2 s1)
-	     (setq i (1+ i)))))))
+                  (s1 (window-start w1))
+                  (s2 (window-start w2))
+                  )
+             (set-window-buffer w1  b2)
+             (set-window-buffer w2 b1)
+             (set-window-start w1 s2)
+             (set-window-start w2 s1)
+             (setq i (1+ i)))))))
 (global-set-key (kbd "s-§") 'rotate-windows)
 
 
@@ -296,12 +301,12 @@ by using nxml's indentation rules."
 
 (when window-system
   (let (
-	(px (display-pixel-width))
-	(py (display-pixel-height))
-	(fx (frame-char-width))
-	(fy (frame-char-height))
-	tx ty
-	)
+        (px (display-pixel-width))
+        (py (display-pixel-height))
+        (fx (frame-char-width))
+        (fy (frame-char-height))
+        tx ty
+        )
     ;; Next formulas discovered empiric on Windows host with default font.
     (setq tx (- (/ px fx) 7))
     (setq ty (- (/ py fy) 4))
