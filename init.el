@@ -142,7 +142,7 @@ by using nxml's indentation rules."
 
 (add-hook 'clojure-mode-hook 'prettify-symbols-mode)
 (add-hook 'emacs-lisp-mode-hook  'prettify-symbols-mode)
-
+(setq-default indent-tabs-mode nil)
 (require 'paredit)
 (require 'expand-region)
 (require 'autopair)
@@ -158,6 +158,11 @@ by using nxml's indentation rules."
 (require 'scala-mode2)
 (require 'ensime)
 (require 'ac-cider)
+(require 'editorconfig)
+(load "editorconfig")
+
+(add-to-list 'auto-mode-alist '("\\.jsx$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 
 (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
 (add-hook 'cider-mode-hook 'ac-cider-setup)
