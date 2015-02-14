@@ -34,6 +34,7 @@
    web-mode
    emmet-mode
    helm-projectile
+   dired+
 ))
 
 (defun install-wanted-packages ()

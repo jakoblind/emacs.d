@@ -115,6 +115,8 @@
 
 ;; possible to undo/redo window splitting
 
+(require 'dired+)
+
 (require 'flx-ido)
 (ido-mode 1)
 (ido-everywhere 1)
@@ -169,6 +171,7 @@ by using nxml's indentation rules."
 (require 'web-mode)
 (require 'emmet-mode)
 (require 'react-snippets)
+
 
 
 (define-key yas-minor-mode-map (kbd "<tab>") nil)
