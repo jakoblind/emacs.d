@@ -159,6 +159,14 @@ by using nxml's indentation rules."
 (require 'ensime)
 (require 'ac-cider)
 (require 'web-mode)
+(require 'emmet-mode)
+(require 'react-snippets)
+
+
+(define-key yas-minor-mode-map (kbd "<tab>") nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
+(define-key yas-minor-mode-map (kbd "s-<tab>") 'yas-expand)
+
 
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
@@ -175,6 +183,7 @@ by using nxml's indentation rules."
 (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'cider-mode))
+
 
 (defun set-auto-complete-as-completion-at-point-function ()
   (setq completion-at-point-functions '(auto-complete)))

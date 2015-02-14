@@ -32,6 +32,8 @@
    noctilux-theme
    cursor-chg
    web-mode
+   emmet-mode
+   helm-projectile
 ))
 
 (defun install-wanted-packages ()

@@ -6,7 +6,7 @@
 ; when opening a new window, move focus to it
 
 ;; file navigation
-(global-set-key (kbd "M-o") 'projectile-find-file)
+(global-set-key (kbd "M-o") 'helm-projectile)
 (global-set-key (kbd "M-i") 'projectile-display-buffer)
 (global-set-key (kbd "M-b") 'ido-switch-buffer)
 
@@ -54,7 +54,7 @@ around the text moved over."
 (global-set-key (kbd "s-<down>") 'er/contract-region)
 (global-set-key (kbd "s-<up>") 'er/expand-region)
 (global-set-key (kbd "s-<left>") (lambda () (interactive "^")
-				  (forward-symbol-shift-aware -1)))
+                                  (forward-symbol-shift-aware -1)))
 (global-set-key (kbd "s-<right>") 'forward-symbol-shift-aware)
 
 (defun delete-word-no-kill (arg)
@@ -109,12 +109,12 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; remap C-a to `smarter-move-beginning-of-line'
 (global-set-key [remap move-beginning-of-line]
-		'smarter-move-beginning-of-line)
+                'smarter-move-beginning-of-line)
 
 (defun delete-line (&optional arg)
   (interactive "P")
   (flet ((kill-region (begin end)
-		      (delete-region begin end)))
+                      (delete-region begin end)))
     (kill-whole-line arg)))
 
 
@@ -132,17 +132,17 @@ there's a region, all lines that region covers will be duplicated."
   (interactive "p")
   (let (beg end (origin (point)))
     (if (and mark-active (> (point) (mark)))
-	(exchange-point-and-mark))
+        (exchange-point-and-mark))
     (setq beg (line-beginning-position))
     (if mark-active
-	(exchange-point-and-mark))
+        (exchange-point-and-mark))
     (setq end (line-end-position))
     (let ((region (buffer-substring-no-properties beg end)))
       (dotimes (i arg)
-	(goto-char end)
-	(newline)
-	(insert region)
-	(setq end (point)))
+        (goto-char end)
+        (newline)
+        (insert region)
+        (setq end (point)))
       (goto-char (+ origin (* (length region) arg) arg)))))
 
  (defun duplicate-line ()
@@ -152,7 +152,7 @@ there's a region, all lines that region covers will be duplicated."
    (copy-from-above-command))
 
 
-(global-set-key (kbd "M-e") 'smex)
+(global-set-key (kbd "M-e") 'helm-M-x)
 (global-set-key (kbd "M-d") 'duplicate-current-line-or-region)
 (global-set-key (kbd "M-s") 'save-buffer)
 (global-set-key (kbd "M-x") 'kill-region)
@@ -160,8 +160,8 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key (kbd "M-v") 'yank)
 (global-set-key (kbd "M-z") 'undo-tree-undo)
 (global-set-key (kbd "M-w")
-	'(lambda () (interactive)
-	   (let (kill-buffer-query-functions) (kill-buffer))))
+        '(lambda () (interactive)
+           (let (kill-buffer-query-functions) (kill-buffer))))
 
 (global-set-key (kbd "M-a") 'mark-whole-buffer)
 (global-set-key (kbd "M-q") (kbd "C-x C-c"))
@@ -174,8 +174,8 @@ there's a region, all lines that region covers will be duplicated."
   (interactive)
   (unwind-protect
       (progn
-	(linum-mode 1)
-	(call-interactively 'goto-line))
+        (linum-mode 1)
+        (call-interactively 'goto-line))
     (linum-mode -1)))
 (global-set-key (kbd "M-l") 'goto-line-with-feedback)
 
@@ -192,9 +192,9 @@ there's a region, all lines that region covers will be duplicated."
    (cond
     ((and mark-active transient-mark-mode)
      (if (> (point) (mark))
-	    (exchange-point-and-mark))
+            (exchange-point-and-mark))
      (let ((column (current-column))
-	      (text (delete-and-extract-region (point) (mark))))
+              (text (delete-and-extract-region (point) (mark))))
        (forward-line arg)
        (move-to-column column t)
        (set-mark (point))
@@ -206,7 +206,7 @@ there's a region, all lines that region covers will be duplicated."
      (when (or (> arg 0) (not (bobp)))
        (forward-line)
        (when (or (< arg 0) (not (eobp)))
-	    (transpose-lines arg))
+            (transpose-lines arg))
        (forward-line -1)))))
 
 (defun move-text-down (arg)
