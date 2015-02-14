@@ -6,7 +6,7 @@
 ; when opening a new window, move focus to it
 
 ;; file navigation
-(global-set-key (kbd "M-o") 'helm-projectile)
+(global-set-key (kbd "M-o") 'projectile-find-file)
 (global-set-key (kbd "M-i") 'projectile-display-buffer)
 (global-set-key (kbd "M-b") 'ido-switch-buffer)
 
@@ -152,7 +152,7 @@ there's a region, all lines that region covers will be duplicated."
    (copy-from-above-command))
 
 
-(global-set-key (kbd "M-e") 'helm-M-x)
+(global-set-key (kbd "M-e") 'smex)
 (global-set-key (kbd "M-d") 'duplicate-current-line-or-region)
 (global-set-key (kbd "M-s") 'save-buffer)
 (global-set-key (kbd "M-x") 'kill-region)
