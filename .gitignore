@@ -10,3 +10,5 @@ elpa
 ido.last
 projectile-bookmarks.eld
 smex-items
+.mc-lists.el
+ac-comphist.dat
