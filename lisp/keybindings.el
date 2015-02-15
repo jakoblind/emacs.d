@@ -11,6 +11,9 @@
 (global-set-key (kbd "M-i") 'projectile-display-buffer)
 (global-set-key (kbd "M-b") 'ido-switch-buffer)
 
+(global-set-key (kbd "M-+") 'text-scale-increase)
+(global-set-key (kbd "M--") 'text-scale-decrease)
+
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
