@@ -117,6 +117,10 @@
 
 (require 'dired+)
 
+(defun create-note (file)
+  (interactive "sFilename: ")
+  (find-file (concat "/Users/jakoblind/Google Drive/emacsnotes/" file)))
+
 (require 'flx-ido)
 (ido-mode 1)
 (ido-everywhere 1)
