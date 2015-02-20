@@ -186,7 +186,7 @@ by using nxml's indentation rules."
       (let ((web-mode-enable-part-face nil))
         ad-do-it)
     ad-do-it))
-(add-to-list 'auto-mode-alist '("\\.jsx$" . js2-mode))
+;(add-to-list 'auto-mode-alist '("\\.jsx$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 
 (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
