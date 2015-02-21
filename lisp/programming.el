@@ -7,18 +7,19 @@
 ;;; auto complete mod
 ;;; should be loaded after yasnippet so that they can work together
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories (concat user-emacs-directory "/elpa/auto-complete-20140824.1658/dict/"))
+;(add-to-list 'ac-dictionary-directories (concat user-emacs-directory "/elpa/auto-complete-20141208.809/dict/"))
 (ac-config-default)
+;(global-auto-complete-mode t)
 ;;; set the trigger key so that it can work together with yasnippet on tab key,
 ;;; if the word exists in yasnippet, pressing tab will cause yasnippet to
 ;;; activate, otherwise, auto-complete will
-(ac-set-trigger-key "TAB")
-(ac-set-trigger-key "<tab>")
+;(ac-set-trigger-key "TAB")
+;(ac-set-trigger-key "<tab>")
 
 
-(define-key yas-minor-mode-map (kbd "<tab>") nil)
-(define-key yas-minor-mode-map (kbd "TAB") nil)
-(define-key yas-minor-mode-map (kbd "s-<tab>") 'yas-expand)
+;(define-key yas-minor-mode-map (kbd "<tab>") nil)
+;(define-key yas-minor-mode-map (kbd "TAB") nil)
+;(define-key yas-minor-mode-map (kbd "s-<tab>") 'yas-expand)
 
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
@@ -29,11 +30,11 @@
 (define-key global-map (kbd "C-;") 'ace-jump-mode)
 (global-set-key (kbd "C-x C-y") 'browse-kill-ring)
 
-(defun set-auto-complete-as-completion-at-point-function ()
-  (setq completion-at-point-functions '(auto-complete)))
+;(defun set-auto-complete-as-completion-at-point-function ()
+;  (setq completion-at-point-functions '(auto-complete)))
 
-(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
-(add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function)
+;(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
+;(add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function)
 
 
 (provide 'programming)
