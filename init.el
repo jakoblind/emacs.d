@@ -75,23 +75,6 @@
 
 ;;; install all packages
 (require 'packages)
-(global-set-key (kbd "C-x o") 'switch-window)
-
-;;; yasnippet
-;;; should be loaded before auto complete so that they can work together
-(require 'yasnippet)
-(yas-global-mode 1)
-
-;;; auto complete mod
-;;; should be loaded after yasnippet so that they can work together
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories (concat user-emacs-directory "/elpa/auto-complete-20140824.1658/dict/"))
-(ac-config-default)
-;;; set the trigger key so that it can work together with yasnippet on tab key,
-;;; if the word exists in yasnippet, pressing tab will cause yasnippet to
-;;; activate, otherwise, auto-complete will
-(ac-set-trigger-key "TAB")
-(ac-set-trigger-key "<tab>")
 
 (require 'ido)
 (require 'flx-ido)
@@ -115,12 +98,6 @@
 
 (add-hook 'find-file-hooks 'my-find-file-check-make-large-file-read-only-hook)
 
-
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; This is your old M-x.
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
 (setq ns-pop-up-frames nil)
 
 ;; possible to undo/redo window splitting
@@ -139,161 +116,30 @@
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
 
-;;; XML pretty print
-(defun pretty-print-xml-region (begin end)
-  "Pretty format XML markup in region. You need to have nxml-mode
-http://www.emacswiki.org/cgi-bin/wiki/NxmlMode installed to do
-this.  The function inserts linebreaks to separate tags that have
-nothing but whitespace between them.  It then indents the markup
-by using nxml's indentation rules."
-  (interactive "r")
-  (save-excursion
-      (nxml-mode)
-      (goto-char begin)
-      (while (search-forward-regexp "\>[ \\t]*\<" nil t)
-        (backward-char) (insert "\n"))
-      (indent-region begin end))
-    (message "Ah, much better!"))
-
-(defun pretty-print-json-region (start end)
-  (interactive "r")
-  (shell-command-on-region start end "python -m json.tool" nil (current-buffer) 1))
-
-
 (winner-mode 1)
+
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
 (setq-default indent-tabs-mode nil)
-(require 'paredit)
+
 (require 'expand-region)
 (require 'autopair)
-(require 'js2-mode)
-(require 'js2-refactor)
-(require 'multiple-cursors)
 (require 'undo-tree)
 (require 'smooth-scrolling)
-(require 'clojure-mode)
-(require 'clj-refactor)
-(require 'cider)
 (require 'rainbow-delimiters)
-(require 'scala-mode2)
-(require 'ensime)
-(require 'ac-cider)
-(require 'web-mode)
-(require 'emmet-mode)
-(require 'react-snippets)
 
-(add-hook 'clojure-mode-hook 'prettify-symbols-mode)
-(add-hook 'emacs-lisp-mode-hook  'prettify-symbols-mode)
-(add-hook 'js2-mode-hook
-            (lambda ()
-              (push '("function" . ?λ) prettify-symbols-alist)))
+;;my programmingmodules
+(require 'myparedit)
+(require 'javascript)
+(require 'clojure)
+(require 'scala)
+(require 'emacslisp)
+(require 'web)
 
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+(require 'window)
+(require 'prettyprint)
 
-(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-(eval-after-load 'tern
-   '(progn
-      (require 'tern-auto-complete)
-      (tern-ac-setup)))
-
-;; add a semicolon at end of line with M-; in js2-mode
-(eval-after-load 'js2-mode
-  '(global-set-key (kbd "M-;")
-                   '(lambda () (interactive)
-                      (point-to-register 16)
-                      (end-of-line)
-                      (insert ";")
-                      (jump-to-register 16))))
-
-(defun my-paredit-nonlisp ()
-  "Turn on paredit mode for non-lisps."
-  (interactive)
-  (set (make-local-variable 'paredit-space-for-delimiter-predicates)
-       '((lambda (endp delimiter) nil)))
-  (paredit-mode 1))
-
-(add-hook 'js2-mode-hook 'my-paredit-nonlisp)
-
-(define-key yas-minor-mode-map (kbd "<tab>") nil)
-(define-key yas-minor-mode-map (kbd "TAB") nil)
-(define-key yas-minor-mode-map (kbd "s-<tab>") 'yas-expand)
-
-
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
-(defadvice web-mode-highlight-part (around tweak-jsx activate)
-  (if (equal web-mode-content-type "jsx")
-      (let ((web-mode-enable-part-face nil))
-        ad-do-it)
-    ad-do-it))
-
-
-(add-hook 'cider-mode-hook 'ac-flyspell-workaround)
-(add-hook 'cider-mode-hook 'ac-cider-setup)
-(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
-(eval-after-load "auto-complete"
-  '(add-to-list 'ac-modes 'cider-mode))
-
-
-(defun set-auto-complete-as-completion-at-point-function ()
-  (setq completion-at-point-functions '(auto-complete)))
-
-(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
-(add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function)
-
-
-
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-
-(define-key scala-mode-map (kbd "M-s-<left>") 'ensime-pop-find-definition-stack)
-;;ensime-inspect-type-at-point
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-
-(add-hook 'clojure-mode-hook (lambda ()
-                               (clj-refactor-mode 1)
-                               ;; insert keybinding setup here
-                               (cljr-add-keybindings-with-prefix "C-c C-c")
-                               ))
-
-(add-hook 'clojure-mode-hook (lambda () (paredit-mode 1)))
-(add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
-(add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode 1)))
-
-(eval-after-load "cider"
-  '(define-key cider-mode-map (kbd "C-c C-d") 'ac-cider-popup-doc))
-
-(define-key paredit-mode-map (kbd "s-<left>") nil)
-(define-key paredit-mode-map (kbd "M-<down>") nil)
-(define-key paredit-mode-map (kbd "M-<up>") nil)
-(define-key paredit-mode-map (kbd "s-<right>") nil)
-(define-key paredit-mode-map (kbd "s-S-<left>") nil)
-(define-key paredit-mode-map (kbd "s-S-<right>") nil)
-(define-key paredit-mode-map (kbd "M-q") nil)
-(define-key paredit-mode-map (kbd "M-s") nil)
-(define-key paredit-mode-map (kbd "M-d") nil)
-(define-key paredit-mode-map (kbd "M-;") nil)
-(define-key paredit-mode-map (kbd "s-r") 'paredit-raise-sexp)
-(define-key paredit-mode-map (kbd "s-s") 'paredit-splice-sexp)
-(define-key paredit-mode-map (kbd "<return>") 'paredit-newline)
-(define-key paredit-mode-map (kbd "S-<return>") (kbd "C-e <return> <tab>"))
-
-(define-key paredit-mode-map (kbd "s-e") 'cider-eval-last-sexp)
-
-;;; Dont let ESC close my windows
-(defadvice keyboard-escape-quit (around my-keyboard-escape-quit activate)
-  (let (orig-one-window-p)
-    (fset 'orig-one-window-p (symbol-function 'one-window-p))
-    (fset 'one-window-p (lambda (&optional nomini all-frames) t))
-    (unwind-protect
-        ad-do-it
-      (fset 'one-window-p (symbol-function 'orig-one-window-p)))))
-
-(defadvice split-window (after move-point-to-new-window activate)
-  "Moves the point to the newly created window after splitting."
-  (other-window 1))
 
 (require 'cursor-chg)
 (change-cursor-mode 0)
@@ -304,33 +150,6 @@ by using nxml's indentation rules."
 (setq save-place-file (expand-file-name ".places" user-emacs-directory))
 
 
-(defun rotate-windows ()
-  "Rotate your windows"
-  (interactive)
-  (cond ((not (> (count-windows)1))
-         (message "You can't rotate a single window!"))
-        (t
-         (setq i 1)
-         (setq numWindows (count-windows))
-         (while  (< i numWindows)
-           (let* (
-                  (w1 (elt (window-list) i))
-                  (w2 (elt (window-list) (+ (% i numWindows) 1)))
-
-                  (b1 (window-buffer w1))
-                  (b2 (window-buffer w2))
-
-                  (s1 (window-start w1))
-                  (s2 (window-start w2))
-                  )
-             (set-window-buffer w1  b2)
-             (set-window-buffer w2 b1)
-             (set-window-start w1 s2)
-             (set-window-start w2 s1)
-             (setq i (1+ i)))))))
-(global-set-key (kbd "s-§") 'rotate-windows)
-
-
 (global-undo-tree-mode)
 (projectile-global-mode)
 (autopair-global-mode) ;; enable autopair in all buffers
@@ -338,14 +157,6 @@ by using nxml's indentation rules."
 (load-theme 'noctilux t)
 
 (setq highlight-symbol-idle-delay 0)
-
-;;multi cursor
-(global-set-key (kbd "M-g") 'mc/mark-next-word-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-(define-key global-map (kbd "C-;") 'ace-jump-mode)
-(global-set-key (kbd "C-x C-y") 'browse-kill-ring)
-
 
 (require 'keybindings)
 (require 'sudo-save)
