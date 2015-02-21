@@ -164,8 +164,6 @@ by using nxml's indentation rules."
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-(add-hook 'clojure-mode-hook 'prettify-symbols-mode)
-(add-hook 'emacs-lisp-mode-hook  'prettify-symbols-mode)
 (setq-default indent-tabs-mode nil)
 (require 'paredit)
 (require 'expand-region)
@@ -186,7 +184,38 @@ by using nxml's indentation rules."
 (require 'emmet-mode)
 (require 'react-snippets)
 
+(add-hook 'clojure-mode-hook 'prettify-symbols-mode)
+(add-hook 'emacs-lisp-mode-hook  'prettify-symbols-mode)
+(add-hook 'js2-mode-hook
+            (lambda ()
+              (push '("function" . ?λ) prettify-symbols-alist)))
 
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+
+(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+(eval-after-load 'tern
+   '(progn
+      (require 'tern-auto-complete)
+      (tern-ac-setup)))
+
+;; add a semicolon at end of line with M-; in js2-mode
+(eval-after-load 'js2-mode
+  '(global-set-key (kbd "M-;")
+                   '(lambda () (interactive)
+                      (point-to-register 16)
+                      (end-of-line)
+                      (insert ";")
+                      (jump-to-register 16))))
+
+(defun my-paredit-nonlisp ()
+  "Turn on paredit mode for non-lisps."
+  (interactive)
+  (set (make-local-variable 'paredit-space-for-delimiter-predicates)
+       '((lambda (endp delimiter) nil)))
+  (paredit-mode 1))
+
+(add-hook 'js2-mode-hook 'my-paredit-nonlisp)
 
 (define-key yas-minor-mode-map (kbd "<tab>") nil)
 (define-key yas-minor-mode-map (kbd "TAB") nil)
@@ -200,8 +229,7 @@ by using nxml's indentation rules."
       (let ((web-mode-enable-part-face nil))
         ad-do-it)
     ad-do-it))
-;(add-to-list 'auto-mode-alist '("\\.jsx$" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+
 
 (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
 (add-hook 'cider-mode-hook 'ac-cider-setup)
@@ -246,6 +274,7 @@ by using nxml's indentation rules."
 (define-key paredit-mode-map (kbd "M-q") nil)
 (define-key paredit-mode-map (kbd "M-s") nil)
 (define-key paredit-mode-map (kbd "M-d") nil)
+(define-key paredit-mode-map (kbd "M-;") nil)
 (define-key paredit-mode-map (kbd "s-r") 'paredit-raise-sexp)
 (define-key paredit-mode-map (kbd "s-s") 'paredit-splice-sexp)
 (define-key paredit-mode-map (kbd "<return>") 'paredit-newline)

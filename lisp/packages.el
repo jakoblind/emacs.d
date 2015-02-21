@@ -35,6 +35,9 @@
    emmet-mode
    helm-projectile
    dired+
+   dash-at-point
+   tern
+   tern-auto-complete
 ))
 
 (defun install-wanted-packages ()
