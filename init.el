@@ -50,13 +50,13 @@
 
 ;;; Appearance
 
-
 (when (eq system-type "cygwin")
   (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 130))
 
 (setq visible-bell t)
 
 ;; Highlight current line
+(set-face-background hl-line-face "gray96")
 (global-hl-line-mode 1)
 
 
@@ -88,7 +88,6 @@
     (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
     (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
   (add-hook 'ido-setup-hook 'ido-define-keys)
-
 
 (defun my-find-file-check-make-large-file-read-only-hook ()
   "If a file is over a given size, make the buffer read only."
@@ -130,6 +129,7 @@
 (require 'rainbow-delimiters)
 
 ;;my programmingmodules
+(require 'programming)
 (require 'myparedit)
 (require 'javascript)
 (require 'clojure)
@@ -140,9 +140,9 @@
 (require 'window)
 (require 'prettyprint)
 
-
-(require 'cursor-chg)
-(change-cursor-mode 0)
+;make the cursor thin
+;(require 'cursor-chg)
+;(change-cursor-mode 0)
 
 ;; Save point position between sessions
 (require 'saveplace)
@@ -154,7 +154,7 @@
 (projectile-global-mode)
 (autopair-global-mode) ;; enable autopair in all buffers
 
-(load-theme 'noctilux t)
+;(load-theme 'noctilux t)
 
 (setq highlight-symbol-idle-delay 0)
 
