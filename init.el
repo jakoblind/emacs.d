@@ -49,6 +49,17 @@
  (global-auto-revert-mode 1)
 
 ;;; Appearance
+(set-face-attribute  'mode-line
+		 nil
+		 :foreground "gray80"
+		 :background "gray25"
+		 :box '(:line-width 1 :style released-button))
+
+(set-face-attribute  'mode-line-inactive
+		     nil
+		     :foreground "gray30"
+		     :background "gray96"
+		     :box '(:line-width 1 :style released-button))
 
 (when (eq system-type "cygwin")
   (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 130))
@@ -56,8 +67,8 @@
 (setq visible-bell t)
 
 ;; Highlight current line
-(set-face-background hl-line-face "gray96")
 (global-hl-line-mode 1)
+(set-face-background hl-line-face "gray96")
 
 
 (show-paren-mode t)
@@ -176,12 +187,12 @@
 
 (when window-system
   (let (
-        (px (display-pixel-width))
-        (py (display-pixel-height))
-        (fx (frame-char-width))
-        (fy (frame-char-height))
-        tx ty
-        )
+	(px (display-pixel-width))
+	(py (display-pixel-height))
+	(fx (frame-char-width))
+	(fy (frame-char-height))
+	tx ty
+	)
     ;; Next formulas discovered empiric on Windows host with default font.
     (setq tx (- (/ px fx) 7))
     (setq ty (- (/ py fy) 4))
