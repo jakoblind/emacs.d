@@ -10,20 +10,23 @@
 (add-to-list 'auto-mode-alist '("\\.jsx$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 
-(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-(eval-after-load 'tern
-   '(progn
-      (require 'tern-auto-complete)
-      (tern-ac-setup)))
+;; (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+;; (eval-after-load 'tern
+;;    '(progn
+;;       (require 'tern-auto-complete)
+;;       (tern-ac-setup)))
 
 ;; add a semicolon at end of line with M-; in js2-mode
 (eval-after-load 'js2-mode
-  '(global-set-key (kbd "M-;")
-                   '(lambda () (interactive)
-                      (point-to-register 16)
+  '(progn
+     (define-key js2-mode-map (kbd "M-<backspace>") '(lambda () (interactive) (run-at-end-of-line '(lambda () (backward-char) (delete-char 1)))))
+     (define-key js2-mode-map (kbd "M-;") '(lambda () (interactive) (run-at-end-of-line '(lambda () (insert ";")))))
+     (define-key js2-mode-map (kbd "M-,") '(lambda () (interactive) (run-at-end-of-line '(lambda () (insert ",")))))))
+
+(defun run-at-end-of-line (c) (point-to-register 16)
                       (end-of-line)
-                      (insert ";")
-                      (jump-to-register 16))))
+                      (funcall c)
+                      (jump-to-register 16))
 
 (defun my-paredit-nonlisp ()
   "Turn on paredit mode for non-lisps."
