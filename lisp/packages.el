@@ -38,6 +38,7 @@
    dash-at-point
    tern
    tern-auto-complete
+   windresize
 ))
 
 (defun install-wanted-packages ()
