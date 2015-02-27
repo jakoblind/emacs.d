@@ -10,6 +10,7 @@
 (define-key paredit-mode-map (kbd "M-s") nil)
 (define-key paredit-mode-map (kbd "M-d") nil)
 (define-key paredit-mode-map (kbd "M-;") nil)
+(define-key paredit-mode-map (kbd "M-r") nil)
 (define-key paredit-mode-map (kbd "s-r") 'paredit-raise-sexp)
 (define-key paredit-mode-map (kbd "s-s") 'paredit-splice-sexp)
 (define-key paredit-mode-map (kbd "<return>") 'paredit-newline)
