@@ -133,8 +133,10 @@
 
 (setq-default indent-tabs-mode nil)
 
-(setq speedbar-use-images nil)
-(setq sr-speedbar-right-side nil)
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 10)
+(global-set-key (kbd "M-W") 'recentf-open-files)
 
 (require 'expand-region)
 (require 'autopair)
