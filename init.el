@@ -177,10 +177,12 @@
 
 (setq highlight-symbol-idle-delay 0)
 
-(setq speedbar-use-images nil)
-(setq sr-speedbar-right-side nil)
-(setq sr-speedbar-width 15)
-(setq sr-speedbar-skip-other-window-p t)
+(setq speedbar-use-images nil
+      sr-speedbar-right-side nil
+      sr-speedbar-width 15
+      sr-speedbar-max-width 15
+      sr-speedbar-default-width 15
+      sr-speedbar-skip-other-window-p t)
 
 (sr-speedbar-open)
 
