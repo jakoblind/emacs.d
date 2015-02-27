@@ -170,8 +170,18 @@
 (autopair-global-mode) ;; enable autopair in all buffers
 
 ;(load-theme 'noctilux t)
+;(disable-theme 'noctilux)
+;
 
 (setq highlight-symbol-idle-delay 0)
+
+(setq speedbar-use-images nil)
+(setq sr-speedbar-right-side nil)
+(setq sr-speedbar-width 15)
+(setq sr-speedbar-skip-other-window-p t)
+
+(sr-speedbar-open)
+
 
 (require 'keybindings)
 (require 'sudo-save)
