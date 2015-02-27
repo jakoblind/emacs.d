@@ -12,3 +12,6 @@ projectile-bookmarks.eld
 smex-items
 .mc-lists.el
 ac-comphist.dat
+.tern-port
+eshell
+recentf
