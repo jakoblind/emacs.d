@@ -133,11 +133,15 @@
 
 (setq-default indent-tabs-mode nil)
 
+(setq speedbar-use-images nil)
+(setq sr-speedbar-right-side nil)
+
 (require 'expand-region)
 (require 'autopair)
 (require 'undo-tree)
 (require 'smooth-scrolling)
 (require 'rainbow-delimiters)
+(require 'highlight-symbol)
 
 ;;my programmingmodules
 (require 'programming)
