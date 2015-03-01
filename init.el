@@ -70,6 +70,8 @@
 (global-hl-line-mode 1)
 (set-face-background hl-line-face "gray96")
 
+;show line number in footer
+(column-number-mode 1)
 
 (show-paren-mode t)
 
