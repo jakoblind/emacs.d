@@ -186,6 +186,8 @@ there's a region, all lines that region covers will be duplicated."
 
 
 (global-set-key (kbd "M-f")  'isearch-forward)
+(global-set-key (kbd "M-F")  'projectile-grep)
+(global-set-key (kbd "M-r")  'query-replace)
 (define-key isearch-mode-map (kbd "<down>") 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "<up>") 'isearch-repeat-backward)
 (define-key isearch-mode-map (kbd "<return>") 'isearch-repeat-forward)
