@@ -29,7 +29,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (setq-default highlight-tabs t)
-(setq-default show-trailing-whitespace t)
+(setq-default show-trailing-whitespace 0)
 (add-hook 'before-save-hook 'whitespace-cleanup)
 (add-hook 'before-save-hook (lambda() (delete-trailing-whitespace)))
 
@@ -50,19 +50,22 @@
 
 ;;; Appearance
 (set-face-attribute  'mode-line
-		 nil
-		 :foreground "gray80"
-		 :background "gray25"
-		 :box '(:line-width 1 :style released-button))
+                 nil
+                 :foreground "gray80"
+                 :background "gray25"
+                 :box '(:line-width 1 :style released-button))
 
 (set-face-attribute  'mode-line-inactive
-		     nil
-		     :foreground "gray30"
-		     :background "gray96"
-		     :box '(:line-width 1 :style released-button))
+                     nil
+                     :foreground "gray30"
+                     :background "gray96"
+                     :box '(:line-width 1 :style released-button))
 
 (when (eq system-type "cygwin")
   (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 130))
+
+;increase font size, (and something else?)
+;(set-face-attribute 'default nil :height 150)
 
 (setq visible-bell t)
 
@@ -173,17 +176,20 @@
 (projectile-global-mode)
 (autopair-global-mode) ;; enable autopair in all buffers
 
-;(load-theme 'noctilux t)
+(load-theme 'noctilux t)
 ;(disable-theme 'noctilux)
-;
+                                        ;
+
+(global-visual-line-mode 1)
 
 (setq highlight-symbol-idle-delay 0)
 
 (setq speedbar-use-images nil
       sr-speedbar-right-side nil
-      sr-speedbar-width 15
-      sr-speedbar-max-width 15
-      sr-speedbar-default-width 15
+      speedbar-show-unknown-files t
+      sr-speedbar-width 10
+      sr-speedbar-max-width 10
+      sr-speedbar-default-width 10
       sr-speedbar-skip-other-window-p t)
 
 (sr-speedbar-open)
