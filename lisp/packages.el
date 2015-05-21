@@ -39,6 +39,8 @@
    tern
    tern-auto-complete
    windresize
+   web-beautify
+   ack-and-a-half
 ))
 
 (defun install-wanted-packages ()
