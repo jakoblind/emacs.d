@@ -46,7 +46,9 @@
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
- (global-auto-revert-mode 1)
+(global-auto-revert-mode 1)
+
+(setq shell-file-name "/bin/sh")
 
 ;;; Appearance
 (set-face-attribute  'mode-line
