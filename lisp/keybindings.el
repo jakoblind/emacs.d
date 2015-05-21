@@ -33,6 +33,13 @@
 (global-set-key (kbd "M-~") 'winner-redo)
 
 
+(global-set-key (kbd "s-f") 'forward-word)
+(global-set-key (kbd "s-b") 'backward-word)
+(global-set-key (kbd "s-d") 'kill-word)
+(global-set-key (kbd "s-n") (lambda () (interactive) (ignore-errors (next-line 5))))
+(global-set-key (kbd "s-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
+
+
 ;(windmove-up)
 
 ;; code navigation
@@ -164,6 +171,7 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key (kbd "M-c") 'kill-ring-save)
 (global-set-key (kbd "M-v") 'yank)
 (global-set-key (kbd "M-z") 'undo-tree-undo)
+(global-set-key (kbd "M-Z") 'undo-tree-redo)
 (global-set-key (kbd "M-w")
         '(lambda () (interactive)
            (let (kill-buffer-query-functions) (kill-buffer))))
