@@ -15,3 +15,5 @@ ac-comphist.dat
 .tern-port
 eshell
 recentf
+.DS_Store
+projectile.cache
