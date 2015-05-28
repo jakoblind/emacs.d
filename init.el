@@ -164,6 +164,7 @@
 
 (require 'window)
 (require 'prettyprint)
+(require 's)
 
 ;make the cursor thin
 ;(require 'cursor-chg)
@@ -197,6 +198,7 @@
 
 (sr-speedbar-open)
 
+(require 'nodejs-repl-eval)
 
 (require 'keybindings)
 (require 'sudo-save)
