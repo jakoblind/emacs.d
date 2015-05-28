@@ -67,7 +67,8 @@
   (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 130))
 
 ;increase font size, (and something else?)
-;(set-face-attribute 'default nil :height 150)
+(set-face-attribute 'default nil :height 150)
+;(set-face-attribute 'default nil :height 120)
 
 (setq visible-bell t)
 
