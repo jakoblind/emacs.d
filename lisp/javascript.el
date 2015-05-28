@@ -27,6 +27,7 @@
      (define-key js2-mode-map (kbd "M-/") 'comment-region)
      (define-key js2-mode-map (kbd "M-S-<down>") 'js2r-move-line-down)
      (define-key js2-mode-map (kbd "M-S-<up>") 'js2r-move-line-up)
+     (define-key js2-mode-map (kbd "M-<mouse-1>") 'ac-js2-jump-to-definition)
      (define-key js2-mode-map (kbd "M-S-<backspace>") '(lambda () (interactive) (run-at-end-of-line '(lambda () (backward-char) (delete-char 1)))))
      (define-key js2-mode-map (kbd "M-;") '(lambda () (interactive) (run-at-end-of-line '(lambda () (insert ";")))))
      (define-key js2-mode-map (kbd "M-,") '(lambda () (interactive) (run-at-end-of-line '(lambda () (insert ",")))))))
