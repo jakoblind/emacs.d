@@ -33,6 +33,28 @@
      (define-key js2-mode-map (kbd "M-;") '(lambda () (interactive) (run-at-end-of-line '(lambda () (insert ";")))))
      (define-key js2-mode-map (kbd "M-,") '(lambda () (interactive) (run-at-end-of-line '(lambda () (insert ",")))))))
 
+(eval-after-load 'autoinsert
+  '(define-auto-insert
+     '("\\.\\(jsx\\)\\'" . "JSX component skeleton")
+     '("Short description: "
+       "/** @jsx React.DOM */" \n
+       "'use strict';" \n
+       "" \n
+       "var React = require('react');" \n
+       "var _ = require('lodash');" \n
+       "" \n
+       "var "
+       (first (split-string (file-name-nondirectory (buffer-file-name)) "\\."))
+       " = React.createClass({" \n
+       "render: function() {" \n
+       > _ \n
+       "}" \n
+       "});" \n
+       "" \n
+       "module.exports = "
+       (first (split-string (file-name-nondirectory (buffer-file-name)) "\\."))
+       ";" \n)))
+
 (defun run-at-end-of-line (c) (point-to-register 16)
                       (end-of-line)
                       (funcall c)
