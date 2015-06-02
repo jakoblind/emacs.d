@@ -37,7 +37,8 @@
 (global-set-key (kbd "s-b") 'backward-word)
 (global-set-key (kbd "s-d") 'kill-word)
 (global-set-key (kbd "s-n") (lambda () (interactive) (ignore-errors (next-line 5))))
-(global-set-key (kbd "s-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
+(global-set-key (kbd "s-p") (lambda () (interactive) (ignore-errors (previous-line
+
 
 
 ;(windmove-up)
