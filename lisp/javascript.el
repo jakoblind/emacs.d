@@ -10,6 +10,7 @@
 (add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
 
 (add-hook 'js-mode-hook 'js2-mode)
+(add-hook 'js-mode-hook 'auto-insert-mode)
 (add-hook 'js2-mode-hook 'ac-js2-mode)
 
 ;; (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
@@ -47,7 +48,9 @@
        (first (split-string (file-name-nondirectory (buffer-file-name)) "\\."))
        " = React.createClass({" \n
        "render: function() {" \n
-       > _ \n
+       "return (<div>"
+       > _
+       "</div>);" \n
        "}" \n
        "});" \n
        "" \n
