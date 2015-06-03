@@ -9,9 +9,13 @@
 (add-to-list 'auto-mode-alist '("\\.jsx$" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
 
+(require 'js2-refactor)
+(add-hook 'js2-mode-hook #'js2-refactor-mode)
 (add-hook 'js-mode-hook 'js2-mode)
 (add-hook 'js-mode-hook 'auto-insert-mode)
 (add-hook 'js2-mode-hook 'ac-js2-mode)
+
+(js2r-add-keybindings-with-prefix "C-c C-r")
 
 ;; (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
 ;; (eval-after-load 'tern

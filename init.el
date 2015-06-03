@@ -169,6 +169,7 @@
 (require 'scala)
 (require 'emacslisp)
 (require 'web)
+(require 'npm)
 
 (require 'window)
 (require 'prettyprint)
