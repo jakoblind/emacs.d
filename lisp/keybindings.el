@@ -37,7 +37,7 @@
 (global-set-key (kbd "s-b") 'backward-word)
 (global-set-key (kbd "s-d") 'kill-word)
 (global-set-key (kbd "s-n") (lambda () (interactive) (ignore-errors (next-line 5))))
-(global-set-key (kbd "s-p") (lambda () (interactive) (ignore-errors (previous-line
+(global-set-key (kbd "s-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
 
 
 
@@ -87,6 +87,7 @@ This command does not push erased text to kill-ring."
 (global-set-key (kbd "s-<backspace>") 'backward-delete-word-no-kill)
 
 (global-set-key (kbd "M-<left>") 'smarter-move-beginning-of-line)
+(global-set-key (kbd "C-a") 'smarter-move-beginning-of-line)
 (global-set-key (kbd "M-<right>") 'move-end-of-line-shift-aware)
 (global-set-key (kbd "M-<up>") 'beginning-of-buffer)
 (global-set-key (kbd "M-<down>") (kbd "M->"))
