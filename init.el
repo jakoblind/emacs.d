@@ -170,6 +170,7 @@
 (require 'emacslisp)
 (require 'web)
 (require 'npm)
+(require 'blog)
 
 (require 'window)
 (require 'prettyprint)
