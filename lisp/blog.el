@@ -15,10 +15,9 @@
          :url "http://blog.jakoblind.no/xmlrpc.php"
          :username "jakob")))
 
-(eval-after-load 'org-mode
-  '(progn
-     (define-key org-mode-map (kbd "M-e") 'smex)
-     (define-key org-mode-map (kbd "M-x") 'smex)))
+(add-hook 'org-mode-hook
+          (lambda ()
+            (define-key org-mode-map (kbd "M-e") 'smex)))
 
 
 (provide 'blog)
