@@ -44,4 +44,12 @@ point reaches the beginning or end of the buffer, stop there."
     (linum-mode -1)))
 (global-set-key (kbd "M-l") 'goto-line-with-feedback)
 
+(global-set-key (kbd "C-s-<down>") (lambda () (interactive) (ignore-errors (next-line 5))))
+(global-set-key (kbd "C-s-<up>") (lambda () (interactive) (ignore-errors (previous-line 5))))
+(global-set-key (kbd "s-n") (lambda () (interactive) (ignore-errors (next-line 5))))
+(global-set-key (kbd "s-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
+
+(global-set-key (kbd "M-+") 'text-scale-increase)
+(global-set-key (kbd "M--") 'text-scale-decrease)
+
 (provide 'keybindings-common)

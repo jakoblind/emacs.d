@@ -11,14 +11,6 @@
 (global-set-key (kbd "M-i") 'projectile-display-buffer)
 (global-set-key (kbd "M-b") 'ido-switch-buffer)
 
-(global-set-key (kbd "M-+") 'text-scale-increase)
-(global-set-key (kbd "M--") 'text-scale-decrease)
-
-
-(global-set-key (kbd "C-c C-i") (lambda() (interactive)(find-file "~/.emacs.d/init.el")))
-
-(global-set-key (kbd "C-c C-s") 'magit-status)
-
 ;; Window navigation
 (global-set-key (kbd "M-1") (lambda () (interactive) (delete-other-windows)))
 (global-set-key (kbd "M-2") (lambda () (interactive) (split-window-below)))
@@ -34,8 +26,6 @@
 (global-set-key (kbd "s-f") 'forward-word)
 (global-set-key (kbd "s-b") 'backward-word)
 (global-set-key (kbd "s-d") 'kill-word)
-(global-set-key (kbd "s-n") (lambda () (interactive) (ignore-errors (next-line 5))))
-(global-set-key (kbd "s-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
 
 
 
@@ -87,8 +77,6 @@ This command does not push erased text to kill-ring."
 (global-set-key (kbd "M-<right>") 'move-end-of-line-shift-aware)
 (global-set-key (kbd "M-<up>") 'beginning-of-buffer)
 (global-set-key (kbd "M-<down>") (kbd "M->"))
-(global-set-key (kbd "C-s-<down>") (lambda () (interactive) (ignore-errors (next-line 5))))
-(global-set-key (kbd "C-s-<up>") (lambda () (interactive) (ignore-errors (previous-line 5))))
 (global-set-key (kbd "M-s-<down>") 'scroll-up-command)
 (global-set-key (kbd "M-s-<up>") 'scroll-down-command)
 (global-set-key (kbd "M-<backspace>") 'delete-line)
@@ -202,4 +190,4 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key (kbd "M-S-<down>") 'move-text-down)
 (global-set-key (kbd "M-S-<up>") 'move-text-up)
 
-(provide 'keybindings)
+(provide 'keybindings-mac)
