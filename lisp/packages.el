@@ -2,6 +2,11 @@
 (setq
  wanted-packages
  '(
+   nodejs-repl
+   org2blog
+   editorconfig
+   react-snippets
+   highlight-symbol
    markdown-mode
    rainbow-delimiters
    less-css-mode
