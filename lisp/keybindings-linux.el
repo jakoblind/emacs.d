@@ -1,5 +1,5 @@
-(global-set-key (kbd "M-o") 'projectile-find-file)
-(global-set-key (kbd "M-p") 'projectile-switch-project)
+(global-set-key (kbd "M-i") 'projectile-find-file)
+(global-set-key (kbd "M-o") 'projectile-switch-project)
 
 (global-set-key (kbd "C-x b") 'ido-switch-buffer)
 
