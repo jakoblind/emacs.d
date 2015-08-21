@@ -210,7 +210,14 @@
 
 (require 'nodejs-repl-eval)
 
-(require 'keybindings)
+(cond
+  ((string-equal system-type "darwin") ; Mac OS X
+  (progn
+    (require 'keybindings-mac)))
+ ((string-equal system-type "gnu/linux") ; linux
+  (progn
+    (require 'keybindings-linux))))
+(require 'keybindings-common)
 (require 'sudo-save)
 
 

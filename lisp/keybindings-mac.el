@@ -15,8 +15,6 @@
 (global-set-key (kbd "M--") 'text-scale-decrease)
 
 
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
 (global-set-key (kbd "C-c C-i") (lambda() (interactive)(find-file "~/.emacs.d/init.el")))
 
 (global-set-key (kbd "C-c C-s") 'magit-status)
@@ -45,8 +43,6 @@
 
 ;; code navigation
 
-; move camelcase
-(global-subword-mode 1)
 
 (defun forward-symbol-shift-aware (arg)
   "`forward-symbol', with shift-select-mode support.
@@ -87,7 +83,7 @@ This command does not push erased text to kill-ring."
 (global-set-key (kbd "s-<backspace>") 'backward-delete-word-no-kill)
 
 (global-set-key (kbd "M-<left>") 'smarter-move-beginning-of-line)
-(global-set-key (kbd "C-a") 'smarter-move-beginning-of-line)
+
 (global-set-key (kbd "M-<right>") 'move-end-of-line-shift-aware)
 (global-set-key (kbd "M-<up>") 'beginning-of-buffer)
 (global-set-key (kbd "M-<down>") (kbd "M->"))
@@ -98,32 +94,7 @@ This command does not push erased text to kill-ring."
 (global-set-key (kbd "M-<backspace>") 'delete-line)
 (global-set-key (kbd "S-<return>") (kbd "C-e <return>"))
 (global-set-key (kbd "M-<return>") (kbd "C-a <return> C-p"))
-(defun smarter-move-beginning-of-line (arg)
-  "Move point back to indentation of beginning of line.
 
-Move point to the first non-whitespace character on this line.
-If point is already there, move to the beginning of the line.
-Effectively toggle between the first non-whitespace character and
-the beginning of the line.
-
-If ARG is not nil or 1, move forward ARG - 1 lines first.  If
-point reaches the beginning or end of the buffer, stop there."
-  (interactive "^p")
-  (setq arg (or arg 1))
-
-  ;; Move lines first
-  (when (/= arg 1)
-    (let ((line-move-visual nil))
-      (forward-line (1- arg))))
-
-  (let ((orig-point (point)))
-    (back-to-indentation)
-    (when (= orig-point (point))
-      (move-beginning-of-line 1))))
-
-;; remap C-a to `smarter-move-beginning-of-line'
-(global-set-key [remap move-beginning-of-line]
-                'smarter-move-beginning-of-line)
 
 (defun delete-line (&optional arg)
   (interactive "P")
@@ -182,17 +153,6 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key (kbd "M-q") (kbd "C-x C-c"))
 
 (global-set-key (kbd "M-h") 'highlight-symbol)
-(global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
-
-(defun goto-line-with-feedback ()
-  "Show line numbers temporarily, while prompting for the line number input"
-  (interactive)
-  (unwind-protect
-      (progn
-        (linum-mode 1)
-        (call-interactively 'goto-line))
-    (linum-mode -1)))
-(global-set-key (kbd "M-l") 'goto-line-with-feedback)
 
 
 (global-set-key (kbd "M-f")  'isearch-forward)
