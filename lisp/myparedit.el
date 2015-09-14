@@ -13,6 +13,8 @@
 (define-key paredit-mode-map (kbd "M-r") nil)
 (define-key paredit-mode-map (kbd "s-r") 'paredit-raise-sexp)
 (define-key paredit-mode-map (kbd "s-s") 'paredit-splice-sexp)
+(define-key paredit-mode-map (kbd "M-<up>") 'paredit-splice-sexp-killing-forward)
+(define-key paredit-mode-map (kbd "M-<down>") 'paredit-splice-sexp-killing-backward)
 (define-key paredit-mode-map (kbd "<return>") 'paredit-newline)
 (define-key paredit-mode-map (kbd "S-<return>") (kbd "C-e <return> <tab>"))
 

@@ -30,7 +30,7 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key [remap move-beginning-of-line]
                 'smarter-move-beginning-of-line)
 
-;(global-set-key (kbd "C-a") 'smarter-move-beginning-of-line)
+(global-set-key (kbd "C-a") 'smarter-move-beginning-of-line)
 
 (global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
 
@@ -42,7 +42,7 @@ point reaches the beginning or end of the buffer, stop there."
         (linum-mode 1)
         (call-interactively 'goto-line))
     (linum-mode -1)))
-(global-set-key (kbd "M-l") 'goto-line-with-feedback)
+(global-set-key (kbd "s-l") 'goto-line-with-feedback)
 
 (global-set-key (kbd "C-s-<down>") (lambda () (interactive) (ignore-errors (next-line 5))))
 (global-set-key (kbd "C-s-<up>") (lambda () (interactive) (ignore-errors (previous-line 5))))
