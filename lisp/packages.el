@@ -6,6 +6,7 @@
    org2blog
    editorconfig
    react-snippets
+   ac-js2
    highlight-symbol
    markdown-mode
    rainbow-delimiters
@@ -52,8 +53,9 @@
   "Install wanted packages according to a specific package manager"
     (require 'package)
     (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-    (add-to-list 'package-archives '("melpa" . "http://melpa-stable.milkbox.net/packages/"))
-    (add-to-list 'package-archives '("melpa-snapshots" . "http://melpa.milkbox.net/packages/"))
+    (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+    (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+;    (add-to-list 'package-archives '("melpa-snapshots" . "http://melpa.milkbox.net/packages/"))
     (add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
     (package-initialize)
     (let ((need-refresh nil))
