@@ -11,7 +11,7 @@
 (add-to-list 'auto-mode-alist '("\\.jsx$" . js2-mode))
 
 (require 'js2-refactor)
-(add-hook 'js2-mode-hook #'js2-refactor-mode)
+(add-hook 'js-mode-hook #'js2-refactor-mode)
 (add-hook 'js-mode-hook 'auto-insert-mode)
 (add-hook 'js2-mode-hook 'ac-js2-mode)
 

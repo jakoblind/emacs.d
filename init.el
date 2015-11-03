@@ -70,7 +70,7 @@
 (set-face-attribute 'default nil :height 150)
 ;(set-face-attribute 'default nil :height 120)
 
-(setq visible-bell t)
+(setq visible-bell nil);i want it to be t but doesnt work well on el capitan
 
 ;; Highlight current line
 (global-hl-line-mode 1)

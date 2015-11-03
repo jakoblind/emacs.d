@@ -4,6 +4,6 @@
 
 (eval-after-load 'web-mode
   '(progn
-     (define-key web-mode-map (kbd "M-m") 'js-mode)))
+     (define-key web-mode-map (kbd "M-m") 'js2-mode)))
 
 (provide 'web)
