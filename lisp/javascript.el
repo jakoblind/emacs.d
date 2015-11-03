@@ -12,6 +12,7 @@
 
 (require 'js2-refactor)
 (add-hook 'js-mode-hook #'js2-refactor-mode)
+(add-hook 'js-mode-hook #'flycheck-mode)
 (add-hook 'js-mode-hook 'auto-insert-mode)
 (add-hook 'js2-mode-hook 'ac-js2-mode)
 
@@ -22,6 +23,13 @@
 ;;    '(progn
 ;;       (require 'tern-auto-complete)
 ;;       (tern-ac-setup)))
+
+(require 'flycheck)
+
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+          '(javascript-jshint)))
+(flycheck-add-mode 'javascript-eslint 'web-mode)
 
 ;; add a semicolon at end of line with M-; in js2-mode
 (eval-after-load 'js2-mode
