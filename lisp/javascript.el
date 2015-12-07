@@ -50,16 +50,13 @@
   '(define-auto-insert
      '("\\.\\(jsx\\)\\'" . "JSX component skeleton")
      '("Short description: "
-       "/** @jsx React.DOM */" \n
-       "'use strict';" \n
-       "" \n
-       "var React = require('react');" \n
-       "var _ = require('lodash');" \n
+       "import React from 'react';" \n
+       "import _ from 'lodash';" \n
        "" \n
        "var "
        (first (split-string (file-name-nondirectory (buffer-file-name)) "\\."))
        " = React.createClass({" \n
-       "render: function() {" \n
+       "render() {" \n
        "return (<div>"
        > _
        "</div>);" \n
