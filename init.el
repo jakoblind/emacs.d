@@ -220,6 +220,7 @@
 (require 'keybindings-linux)
 (require 'keybindings-common)
 (require 'sudo-save)
+(require 'macros)
 
 
 (defalias 'ack 'ack-and-a-half)
