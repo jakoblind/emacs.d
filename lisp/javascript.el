@@ -9,12 +9,25 @@
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
+(add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode))
+
+(setq js2-mode-show-parse-errors nil)
+(setq js2-mode-show-strict-warnings nil)
+
+;; Disable JSCS linting because we use es lint
+(let ((checkers (get 'javascript-eslint 'flycheck-next-checkers)))
+  (put 'javascript-eslint 'flycheck-next-checkers
+       (remove '(warning . javascript-jscs) checkers)))
 
 (require 'js2-refactor)
 (add-hook 'js-mode-hook #'js2-refactor-mode)
 (add-hook 'js-mode-hook #'flycheck-mode)
 (add-hook 'js-mode-hook 'auto-insert-mode)
 (add-hook 'js2-mode-hook 'ac-js2-mode)
+
+(add-hook 'js2-mode-hook 'ac-js2-setup-auto-complete-mode)
 
 (js2r-add-keybindings-with-prefix "C-c C-r")
 
