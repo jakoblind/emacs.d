@@ -50,19 +50,6 @@
 
 (setq shell-file-name "/bin/sh")
 
-;;; Appearance
-(set-face-attribute  'mode-line
-                 nil
-                 :foreground "gray80"
-                 :background "gray25"
-                 :box '(:line-width 1 :style released-button))
-
-(set-face-attribute  'mode-line-inactive
-                     nil
-                     :foreground "gray30"
-                     :background "gray96"
-                     :box '(:line-width 1 :style released-button))
-
 (when (eq system-type "cygwin")
   (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 130))
 
@@ -229,6 +216,19 @@
 (defalias 'ack-find-file 'ack-and-a-half-find-file)
 (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 (defalias 'ack-with-args 'ack-and-a-half-with-args)
+;;; Appearance
+(set-face-attribute 'mode-line
+                 nil
+                 :foreground "Black"
+                 :background "#aaccff"
+                 :box '(:line-width 1 :style released-button))
+
+(set-face-attribute 'mode-line-inactive
+                    nil
+                    :foreground "#aaccff"
+                    :background "Black"
+                    :box '(:line-width 1 :style released-button))
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
