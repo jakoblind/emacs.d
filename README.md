@@ -4,6 +4,9 @@
 * https://github.com/bodil/ohai-emacs
 * https://github.com/pierre-lecocq/emacs4developers
 
+## Installation
+
+ln -s ~/dev/emacs.d ~/.emacs.d
 
 TODO:
 * improve query replace. should use selection as input to replace function
