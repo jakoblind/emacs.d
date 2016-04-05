@@ -100,5 +100,22 @@
         ad-do-it)
     ad-do-it))
 
+(defun req-to-import ()
+  "Convert a require statement to an ES6 import statement"
+  (interactive)
+  (beginning-of-line)
+  (kill-word 1)
+  (insert "import")
+  (end-of-line)
+  (backward-char)
+  (paredit-backward)
+  (paredit-backward)
+  (kill-word 1)
+  (delete-backward-char 1)
+  (delete-backward-char 1)
+  (insert "from ")
+  (paredit-forward-down)
+  (paredit-splice-sexp)
+  )
 
 (provide 'javascript)
