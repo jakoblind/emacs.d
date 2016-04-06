@@ -68,8 +68,7 @@
       sr-speedbar-default-width 10
       sr-speedbar-skip-other-window-p t)
 
-;(sr-speedbar-open)
-
+;;(sr-speedbar-open)
 
 (provide 'appearance)
 ;;; appearance.el ends here
