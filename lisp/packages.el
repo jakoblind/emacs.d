@@ -6,7 +6,6 @@
    org2blog
    editorconfig
    react-snippets
-   ac-js2
    highlight-symbol
    markdown-mode
    rainbow-delimiters

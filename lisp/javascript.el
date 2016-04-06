@@ -13,6 +13,9 @@
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode))
 
+;;enable auto complete mode in jsx mode
+(add-to-list 'ac-modes 'js2-jsx-mode)
+
 (setq js2-mode-show-parse-errors nil)
 (setq js2-mode-show-strict-warnings nil)
 
@@ -25,17 +28,17 @@
 (add-hook 'js-mode-hook #'js2-refactor-mode)
 (add-hook 'js-mode-hook #'flycheck-mode)
 (add-hook 'js-mode-hook 'auto-insert-mode)
-(add-hook 'js2-mode-hook 'ac-js2-mode)
 
-(add-hook 'js2-mode-hook 'ac-js2-setup-auto-complete-mode)
+
+(require 'tern)
+(add-hook 'js2-mode-hook (lambda () (tern-mode t))) ;
+(setq tern-command (cons (executable-find "tern") '()))
+(eval-after-load 'tern
+  '(progn
+     (require 'tern-auto-complete)
+     (tern-ac-setup)))
 
 (js2r-add-keybindings-with-prefix "C-c C-r")
-
-;; (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-;; (eval-after-load 'tern
-;;    '(progn
-;;       (require 'tern-auto-complete)
-;;       (tern-ac-setup)))
 
 (require 'flycheck)
 
@@ -53,7 +56,6 @@
      (define-key js2-mode-map (kbd "M-/") 'comment-region)
      (define-key js2-mode-map (kbd "M-S-<down>") 'js2r-move-line-down)
      (define-key js2-mode-map (kbd "M-S-<up>") 'js2r-move-line-up)
-     (define-key js2-mode-map (kbd "M-<mouse-1>") 'ac-js2-jump-to-definition)
      (define-key js2-mode-map (kbd "M-m") 'web-mode)
      (define-key js2-mode-map (kbd "M-S-<backspace>") '(lambda () (interactive) (run-at-end-of-line '(lambda () (backward-char) (delete-char 1)))))
      (define-key js2-mode-map (kbd "M-;") '(lambda () (interactive) (run-at-end-of-line '(lambda () (insert ";")))))
