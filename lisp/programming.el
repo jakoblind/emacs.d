@@ -20,6 +20,8 @@
 
 ;;magit
 (setq magit-push-always-verify nil)
+;; try to make magit faster
+(setq magit-refresh-status-buffer nil)
 
 (define-key yas-minor-mode-map (kbd "<tab>") nil)
 (define-key yas-minor-mode-map (kbd "TAB") nil)
@@ -33,6 +35,8 @@
 
 (define-key global-map (kbd "C-;") 'ace-jump-mode)
 (global-set-key (kbd "C-x C-y") 'browse-kill-ring)
+
+
 
 ;(defun set-auto-complete-as-completion-at-point-function ()
 ;  (setq completion-at-point-functions '(auto-complete)))
