@@ -24,6 +24,10 @@
 
 ;;; Code:
 
+;; smart mode line
+(sml/setup)
+(setq sml/theme nil)
+
 (load-theme 'noctilux t)
 ;;(disable-theme 'noctilux)
 
@@ -38,7 +42,7 @@
 
 ;; Highlight current line
 (global-hl-line-mode 1)
-(set-face-background hl-line-face "gray30" )
+(set-face-background hl-line-face "darkblue" )
 
 ;show line number in footer
 (column-number-mode 1)
@@ -46,15 +50,17 @@
 ;; Color of mode-line, the thing at the bottom of all windows
 (set-face-attribute 'mode-line
                  nil
-                 :foreground "Black"
-                 :background "#aaccff"
-                 :box '(:line-width 1 :style released-button))
+;;                 :foreground "Black"
+;;                 :background "Black"
+                 ;;:box '(:line-width 1 :style released-button)
+                 )
 
 (set-face-attribute 'mode-line-inactive
                     nil
-                    :foreground "#aaccff"
-                    :background "Black"
-                    :box '(:line-width 1 :style released-button))
+;;                    :foreground "#aaccff"
+;;                    :background "Black"
+;;                    :box '(:line-width 1 :style released-button)
+                    )
 
 (global-visual-line-mode 1)
 
@@ -69,6 +75,7 @@
       sr-speedbar-skip-other-window-p t)
 
 ;;(sr-speedbar-open)
+
 
 (provide 'appearance)
 ;;; appearance.el ends here
