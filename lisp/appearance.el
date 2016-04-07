@@ -39,13 +39,27 @@
 ;;(set-face-attribute 'default nil :height 120)
 
 
-;; I want it to be t but doesnt work well on el capitan
-(setq visible-bell nil)
-
 
 ;; Highlight current line
 (global-hl-line-mode 1)
 (set-face-background hl-line-face "darkblue" )
+
+
+;; bell - make it flash background red instead of make a noise
+(setq visible-bell nil)
+
+(make-face 'flash-active-buffer-face)
+(set-face-attribute 'flash-active-buffer-face nil
+                    :background "red"
+                    :foreground "black")
+(defun flash-active-buffer ()
+  (interactive)
+  (run-at-time "100 millisec" nil
+               (lambda (remap-cookie)
+                 (face-remap-remove-relative remap-cookie))
+               (face-remap-add-relative 'default 'flash-active-buffer-face)))
+
+(setq ring-bell-function 'flash-active-buffer)
 
 ;show line number in footer
 (column-number-mode 1)
