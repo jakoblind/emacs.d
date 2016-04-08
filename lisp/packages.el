@@ -8,6 +8,7 @@
    react-snippets
    highlight-symbol
    markdown-mode
+   feature-mode
    rainbow-delimiters
    less-css-mode
    projectile

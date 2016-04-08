@@ -7,6 +7,7 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 (global-set-key (kbd "C-'") 'er/expand-region)
+(global-set-key (kbd "M-'") 'er/contract-region)
 
 (global-set-key (kbd "M-o") 'other-window)
 
@@ -16,7 +17,5 @@
 ;(global-set-key (kbd "C-[") 'mc/mark-previous-like-this)
 ;(global-set-key (kbd "C-'") 'mc/mark-next-like-this)
 ;(global-set-key (kbd "C-\"") 'mc/mark-more-like-this-extended)
-
-;expand region here
 
 (provide 'keybindings-linux)
