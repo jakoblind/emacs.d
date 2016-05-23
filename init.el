@@ -69,6 +69,7 @@
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
+  (setq tooltip-use-echo-area t)
   (blink-cursor-mode -1))
 
 
