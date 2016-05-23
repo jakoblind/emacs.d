@@ -57,7 +57,7 @@
   (run-at-time "100 millisec" nil
                (lambda (remap-cookie)
                  (face-remap-remove-relative remap-cookie))
-               (face-remap-add-relative 'default 'flash-active-buffer-face)))
+               (face-remap-add-relative hl-line-face 'flash-active-buffer-face)))
 
 (setq ring-bell-function 'flash-active-buffer)
 
