@@ -28,6 +28,15 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
+(setq confirm-nonexistent-file-or-buffer nil)
+(setq ido-create-new-buffer 'always)
+(setq inhibit-startup-message t
+      inhibit-startup-echo-area-message t)
+
+(setq kill-buffer-query-functions
+  (remq 'process-kill-buffer-query-function
+         kill-buffer-query-functions))
+
 (setq-default highlight-tabs t)
 (setq-default show-trailing-whitespace 0)
 (add-hook 'before-save-hook 'whitespace-cleanup)
