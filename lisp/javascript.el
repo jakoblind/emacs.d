@@ -101,6 +101,9 @@
         ad-do-it)
     ad-do-it))
 
+;;
+;; My custom edit and refactoring commands for Javascript
+;;
 (defun req-to-import ()
   "Convert a require statement to an ES6 import statement"
   (interactive)
@@ -116,7 +119,22 @@
   (delete-backward-char 1)
   (insert "from ")
   (paredit-forward-down)
-  (paredit-splice-sexp)
-  )
+  (paredit-splice-sexp))
+
+(defun js/itonly (args)
+  "find closest it and make it it.only"
+  (interactive "P")
+  (save-excursion
+    (search-backward "it(")
+    (forward-word)
+    (insert ".only")))
+
+(defun js/xit (args)
+  "find closest it and make it xit"
+  (interactive "P")
+  (save-excursion
+    (search-backward "it(")
+    (insert "x")))
+
 
 (provide 'javascript)
