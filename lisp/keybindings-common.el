@@ -49,7 +49,7 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "M-n") (lambda () (interactive) (ignore-errors (next-line 5))))
 (global-set-key (kbd "M-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
 
-(global-set-key (kbd "M-+") 'text-scale-increase)
-(global-set-key (kbd "M--") 'text-scale-decrease)
+(global-set-key (kbd "C-c +") 'text-scale-increase)
+(global-set-key (kbd "C-c -") 'text-scale-decrease)
 
 (provide 'keybindings-common)
