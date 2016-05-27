@@ -212,6 +212,7 @@
 (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 (defalias 'ack-with-args 'ack-and-a-half-with-args)
 
+(server-start)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
