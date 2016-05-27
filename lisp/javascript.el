@@ -121,20 +121,55 @@
   (paredit-forward-down)
   (paredit-splice-sexp))
 
+(defun js/only (name)
+  (save-excursion
+    (search-backward (concat name "("))
+    (forward-word)
+    (insert ".only")
+    (message (concat  "Inserted one " name ".only"))))
+
+(defun js/x (name)
+  (save-excursion
+    (search-backward (concat name "("))
+    (insert "x")
+    (message (concat "Inserted one x" name ""))))
+
+(defun js/remove-x-or-only (name)
+  (save-excursion
+    (if (search-backward (concat "x" name "(") 0 t)
+        (progn (delete-forward-char 1) (message (concat "Deleted one x" name)))
+      (if (search-backward (concat name ".only(") 0 t)
+          (progn (forward-word) (kill-word 1) (message (concat "Deleted one " name ".only")))
+        (message (concat "No " name ".only or x" name " found"))))))
+
 (defun js/itonly (args)
   "find closest it and make it it.only"
   (interactive "P")
-  (save-excursion
-    (search-backward "it(")
-    (forward-word)
-    (insert ".only")))
+  (js/only "it"))
 
 (defun js/xit (args)
   "find closest it and make it xit"
   (interactive "P")
-  (save-excursion
-    (search-backward "it(")
-    (insert "x")))
+  (js/x "it"))
 
+(defun js/it (args)
+  "find closest xit or it.only and make it to an it"
+  (interactive "P")
+  (js/remove-x-or-only "it"))
+
+(defun js/describe-only (args)
+  "find closest it and make it it.only"
+  (interactive "P")
+  (js/only "describe"))
+
+(defun js/x-describe (args)
+  "find closest it and make it xit"
+  (interactive "P")
+  (js/x "describe"))
+
+(defun js/clean-describe (args)
+  "find closest xit or it.only and make it to an it"
+  (interactive "P")
+  (js/remove-x-or-only "describe"))
 
 (provide 'javascript)
