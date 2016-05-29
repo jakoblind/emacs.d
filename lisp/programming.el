@@ -30,7 +30,10 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;;multi cursor
-(global-set-key (kbd "M-g") 'mc/mark-next-word-like-this)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "s->") 'mc/mark-next-like-this-word)
+(global-set-key (kbd "s-<") 'mc/mark-previous-word-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 (define-key global-map (kbd "C-;") 'ace-jump-mode)
