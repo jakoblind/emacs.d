@@ -1,4 +1,16 @@
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+(global-set-key (kbd "C-x p") 'projectile-find-file)
+(global-set-key (kbd "C-x i") 'projectile-switch-project)
+
+(global-set-key (kbd "C-x b") 'ido-switch-buffer)
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+(global-set-key (kbd "C-'") 'er/expand-region)
+(global-set-key (kbd "M-'") 'er/contract-region)
+
+(global-set-key (kbd "M-o") 'other-window)
 
 ; move camelcase
 (global-subword-mode 1)
@@ -52,4 +64,4 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "C-c +") 'text-scale-increase)
 (global-set-key (kbd "C-c -") 'text-scale-decrease)
 
-(provide 'keybindings-common)
+(provide 'keybindings)

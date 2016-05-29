@@ -192,19 +192,9 @@
             (define-key shell-mode-map (kbd "C-d") 'comint-delchar-or-eof-or-kill-buffer)))
 
 (require 'nodejs-repl-eval)
-
- ;; (cond
- ;;         ((string-equal system-type "darwin")  ; Mac OS X
- ;;          (progn
- ;;            (require 'keybindings-mac)))
- ;;         ((string-equal system-type "gnu/linux") ; linux
- ;;          (progn
- ;;            (require 'keybindings-linux))))
-(require 'keybindings-linux)
-(require 'keybindings-common)
+(require 'keybindings)
 (require 'sudo-save)
 (require 'macros)
-
 
 (defalias 'ack 'ack-and-a-half)
 (defalias 'ack-same 'ack-and-a-half-same)
