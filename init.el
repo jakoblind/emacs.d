@@ -149,6 +149,7 @@
 (require 'programming)
 (require 'myparedit)
 (require 'javascript)
+(require 'javascript-utils)
 (require 'clojure)
 (require 'scala)
 (require 'emacslisp)
