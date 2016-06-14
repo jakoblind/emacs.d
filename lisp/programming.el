@@ -40,6 +40,8 @@
 (global-set-key (kbd "C-x C-y") 'browse-kill-ring)
 
 
+(global-set-key (kbd "C-c s") 'magit-status)
+
 
 ;(defun set-auto-complete-as-completion-at-point-function ()
 ;  (setq completion-at-point-functions '(auto-complete)))
