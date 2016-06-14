@@ -203,6 +203,7 @@
 (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 (defalias 'ack-with-args 'ack-and-a-half-with-args)
 
+(require 'orgmode-config)
 (server-start)
 
 (custom-set-variables
