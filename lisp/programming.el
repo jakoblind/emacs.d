@@ -20,8 +20,13 @@
 
 ;;magit
 (setq magit-push-always-verify nil)
+(global-set-key (kbd "C-c s") 'magit-status)
+
 ;; try to make magit faster
 (setq magit-refresh-status-buffer nil)
+(remove-hook 'server-switch-hook 'magit-commit-diff) ;dont show diff on commit
+
+
 
 (define-key yas-minor-mode-map (kbd "<tab>") nil)
 (define-key yas-minor-mode-map (kbd "TAB") nil)
@@ -38,9 +43,6 @@
 
 (define-key global-map (kbd "C-;") 'ace-jump-mode)
 (global-set-key (kbd "C-x C-y") 'browse-kill-ring)
-
-
-(global-set-key (kbd "C-c s") 'magit-status)
 
 
 ;(defun set-auto-complete-as-completion-at-point-function ()
