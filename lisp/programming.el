@@ -26,7 +26,9 @@
 (setq magit-refresh-status-buffer nil)
 (remove-hook 'server-switch-hook 'magit-commit-diff) ;dont show diff on commit
 
-
+(defun git-commit-check-style-conventions () t) ;dont ask if commit message is too long. i already know
+(setq magit-completing-read-function
+    'magit-ido-completing-read) ; use ido in magit
 
 (define-key yas-minor-mode-map (kbd "<tab>") nil)
 (define-key yas-minor-mode-map (kbd "TAB") nil)

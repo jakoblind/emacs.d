@@ -47,6 +47,7 @@
    windresize
    web-beautify
    ack-and-a-half
+   ido-completing-read+
 ))
 
 (defun install-wanted-packages ()
