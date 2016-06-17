@@ -5,6 +5,7 @@ Most of this emacs config is copied by others (se inspiration section), but ther
 ### JavaScript
 `javascript-utils.el` has some interesting functions for JavaScript developers.
 
+* **js/import** Lists all JavaScript files in projectile project and all dependencies from package.json in ido list. The selected one is insert in an import statement at the cursor.
 * **js/console-log** Lists all javascript variables in the buffer in an ido list. The one you picked is used in a console.log statment that is inserted where you have the cursor.
 * **js/itonly** In Jasmine tests: Find closest `it` and convert it to an `it.only`
 * **js/xit** In Jasmine tests: Find closest `it` and convert it to an `xit`
