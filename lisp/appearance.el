@@ -38,8 +38,6 @@
                     :height 160)
 ;;(set-face-attribute 'default nil :height 120)
 
-`
-
 ;; Highlight current line
 (global-hl-line-mode 1)
 (hl-line-mode)
