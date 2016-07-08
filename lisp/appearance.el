@@ -28,20 +28,21 @@
 (sml/setup)
 (setq sml/theme nil)
 
-(load-theme 'noctilux t)
-;;(disable-theme 'noctilux)
+;;(load-theme 'noctilux t)
+(disable-theme 'noctilux)
 
 ;; Increase font size, (and something else?)
 (set-face-attribute 'default nil
                     :family "Source Code Pro"
                     :weight 'normal
-                    :height 160)
+                    ;:height 130
+                    )
 ;;(set-face-attribute 'default nil :height 120)
 
 ;; Highlight current line
 (global-hl-line-mode 1)
 (hl-line-mode)
-(set-face-background hl-line-face "darkblue" )
+;;(set-face-background hl-line-face "darkblue" )
 
 
 ;; bell - make it flash background red instead of make a noise
