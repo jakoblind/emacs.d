@@ -28,14 +28,14 @@
 (sml/setup)
 (setq sml/theme nil)
 
-;;(load-theme 'noctilux t)
-(disable-theme 'noctilux)
+(load-theme 'noctilux t)
+;;(disable-theme 'noctilux)
 
 ;; Increase font size, (and something else?)
 (set-face-attribute 'default nil
                     :family "Source Code Pro"
                     :weight 'normal
-                    ;:height 130
+                    :height 130
                     )
 ;;(set-face-attribute 'default nil :height 120)
 
