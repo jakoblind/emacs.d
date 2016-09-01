@@ -151,7 +151,7 @@
 (require 'javascript)
 (require 'javascript-utils)
 (require 'clojure)
-(require 'scala)
+;;(require 'scala)
 (require 'emacslisp)
 (require 'web)
 (require 'npm)

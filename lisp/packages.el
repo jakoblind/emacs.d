@@ -48,6 +48,9 @@
    web-beautify
    ack-and-a-half
    ido-completing-read+
+   smart-mode-line
+   f
+   flycheck
 ))
 
 (defun install-wanted-packages ()
