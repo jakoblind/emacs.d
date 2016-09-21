@@ -100,6 +100,13 @@
     (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
   (add-hook 'ido-setup-hook 'ido-define-keys)
 
+
+(defadvice ido-find-file (after find-file-sudo activate)
+  "Find file as root if necessary."
+  (unless (and buffer-file-name
+               (file-writable-p buffer-file-name))
+    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
 (defun my-find-file-check-make-large-file-read-only-hook ()
   "If a file is over a given size, make the buffer read only."
   (when (> (buffer-size) (* 1024 1024))
