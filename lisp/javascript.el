@@ -101,6 +101,9 @@
         ad-do-it)
     ad-do-it))
 
+(add-to-list 'load-path "~/.emacs.d/es6-snippets")
+(require 'es6-snippets)
+
 ;;
 ;; My custom edit and refactoring commands for Javascript
 ;;
