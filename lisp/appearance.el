@@ -32,11 +32,12 @@
 ;;(disable-theme 'noctilux)
 
 ;; Increase font size, (and something else?)
-(set-face-attribute 'default nil
-                    :family "Source Code Pro"
-                    :weight 'normal
-                    :height 130
-                    )
+(defun font-exists-p (font) "check if font exists" (if (null (x-list-fonts font)) nil t))
+(if (font-exists-p "Source Code Pro") (set-face-attribute 'default nil :family "Source Code Pro"))
+
+(set-face-attribute 'default nil :weight 'normal :height 130)
+
+
 ;;(set-face-attribute 'default nil :height 120)
 
 ;; Highlight current line
