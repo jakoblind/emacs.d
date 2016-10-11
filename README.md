@@ -19,6 +19,9 @@ Most of this emacs config is copied by others (se inspiration section), but ther
 
 ln -s ~/dev/emacs.d ~/.emacs.d
 
+git submodule init
+git submodule update
+
 ## Inspiration
 
 * [https://github.com/magnars/.emacs.d](https://github.com/magnars/.emacs.d)
