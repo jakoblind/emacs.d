@@ -23,14 +23,14 @@
   (put 'javascript-eslint 'flycheck-next-checkers
        (remove '(warning . javascript-jscs) checkers)))
 
-(require 'tern)
-(add-hook 'js2-mode-hook (lambda () (tern-mode t))) ;
-(setq tern-command (cons (executable-find "tern") '()))
-(eval-after-load 'tern
-  '(progn
-     (define-key tern-mode-keymap (kbd "C-c C-r") 'nil) ; we are going to use that binding for js2 refactor
-     (require 'tern-auto-complete)
-     (tern-ac-setup)))
+;; (require 'tern)
+;; (add-hook 'js2-mode-hook (lambda () (tern-mode t))) ;
+;; (setq tern-command (cons (executable-find "tern") '()))
+;; (eval-after-load 'tern
+;;   '(progn
+;;      (define-key tern-mode-keymap (kbd "C-c C-r") 'nil) ; we are going to use that binding for js2 refactor
+;;      (require 'tern-auto-complete)
+;;      (tern-ac-setup)))
 
 (require 'js2-refactor)
 (add-hook 'js-mode-hook #'js2-refactor-mode)

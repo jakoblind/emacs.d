@@ -36,6 +36,22 @@
 
 (global-set-key (kbd "C-c c") 'org-capture)
 
+(defun insert-date (prefix)
+    "Insert the current date. With prefix-argument, use ISO format. With
+   two prefix arguments, write out the day and month name."
+    (interactive "P")
+    (let ((format (cond
+                   ((not prefix) "%Y-%m-%d")
+                   ((equal prefix '(16)) "%A, %d. %B %Y"))))
+      (insert (format-time-string format))))
 
-(provide 'orgmode-config)
+(defun insert-time (prefix)
+    "Insert the current time"
+    (interactive "P")
+    (let ((format (cond
+                   ((not prefix) "%H:%M:%S")
+                   ((equal prefix '(4)) "%H:%M:%S %z"))))
+      (insert (format-time-string format))))
+
+(PROVIDE 'orgmode-config)
 ;;; orgmode-config.el ends here
