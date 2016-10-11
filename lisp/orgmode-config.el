@@ -53,5 +53,5 @@
                    ((equal prefix '(4)) "%H:%M:%S %z"))))
       (insert (format-time-string format))))
 
-(PROVIDE 'orgmode-config)
+(provide 'orgmode-config)
 ;;; orgmode-config.el ends here
