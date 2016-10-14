@@ -46,6 +46,10 @@
 (define-key global-map (kbd "C-;") 'ace-jump-mode)
 (global-set-key (kbd "C-x C-y") 'browse-kill-ring)
 
+(defun gh-pr ()
+  "go to github pull request page for repo"
+  (interactive)
+  (browse-url (concat (replace-regexp-in-string ".git$" "" (magit-get "remote" "origin" "url")) "/pulls")))
 
 ;(defun set-auto-complete-as-completion-at-point-function ()
 ;  (setq completion-at-point-functions '(auto-complete)))
