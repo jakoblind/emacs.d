@@ -53,5 +53,28 @@
                    ((equal prefix '(4)) "%H:%M:%S %z"))))
       (insert (format-time-string format))))
 
+;;;TODO: we could consider moving these two function somewhere else
+(defun jakob/string-to-filename (string)
+  "docstring"
+  (replace-regexp-in-string "[^a-zA-z-]" "" (replace-regexp-in-string " " "-" (downcase string))))
+
+(defun create-blog-file (header categories)
+  "Create a new blog file that can be used in github pages"
+  (interactive "sHeader:
+sCategories: ")
+  (let ((dateToday (format-time-string "%Y-%m-%d"))
+        (fullDateToday (format-time-string "%Y-%m-%d %H:%M:%S %z")))
+    (find-file
+     (concat
+      (projectile-project-root) "_posts/"  dateToday "-" (jakob/string-to-filename header) ".markdown"))
+    (insert "---
+layout: post
+title: \"" header "\"
+date:   " fullDateToday "
+categories: " categories "
+---
+")))
+
+
 (provide 'orgmode-config)
 ;;; orgmode-config.el ends here
