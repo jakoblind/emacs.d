@@ -1,6 +1,20 @@
-##My Emacs config
+#Jakobs Emacs config
 
-Most of this emacs config is copied by others (se inspiration section), but there are some original content written by me.
+Welcome to my Emacs configuration, hope you will find something useful here. I have an intention to write a blogpost when I add something cool and I link to them in the blogposts-section below.
+
+## Installation
+
+```bash
+$ git submodule init
+$ git submodule update
+$ ln -s ~/dev/emacs.d ~/.emacs.d
+```
+
+## Overview
+
+### Blogposts
+
+[Quickly go to Github PR page from Emacs](https://jakoblind.github.io/emacs/git/2016/10/14/quickly-go-to-github-pr-page-from-emacs.html)
 
 ### JavaScript
 `javascript-utils.el` has some interesting functions for JavaScript developers.
@@ -15,13 +29,7 @@ Most of this emacs config is copied by others (se inspiration section), but ther
 * **js/clean-describe** In Jasmine tests: Find closest `xdescribe` or `describe.only` and convert it to an `describe`
 
 
-## Installation
 
-```bash
-$ ln -s ~/dev/emacs.d ~/.emacs.d
-$ git submodule init
-$ git submodule update
-```
 ## Inspiration
 
 * [https://github.com/magnars/.emacs.d](https://github.com/magnars/.emacs.d)
