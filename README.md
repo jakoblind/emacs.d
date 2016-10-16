@@ -14,8 +14,9 @@ $ ln -s ~/dev/emacs.d ~/.emacs.d
 
 ### Blogposts
 
-[Automatically import JS files from you project]("https://jakoblind.github.io/emacs/javascript/2016/10/16/automatically-import-js-files-from-you-project.html")
-[Quickly go to Github PR page from Emacs](https://jakoblind.github.io/emacs/git/2016/10/14/quickly-go-to-github-pr-page-from-emacs.html)
+* [Automatically import JS files from you project](https://jakoblind.github.io/emacs/javascript/2016/10/16/automatically-import-js-files-from-you-project.html)
+
+* [Quickly go to Github PR page from Emacs](https://jakoblind.github.io/emacs/git/2016/10/14/quickly-go-to-github-pr-page-from-emacs.html)
 
 ### JavaScript
 `javascript-utils.el` has some interesting functions for JavaScript developers.
