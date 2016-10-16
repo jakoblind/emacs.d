@@ -18,6 +18,8 @@ $ ln -s ~/dev/emacs.d ~/.emacs.d
 
 * [Quickly go to Github PR page from Emacs](https://jakoblind.github.io/emacs/git/2016/10/14/quickly-go-to-github-pr-page-from-emacs.html)
 
+* [An Emacs function for creating blog posts](https://jakoblind.github.io/emacs/2016/10/14/first-blogpost-an-emacs-function-for-creating-blog-posts.html)
+
 ### JavaScript
 `javascript-utils.el` has some interesting functions for JavaScript developers.
 
