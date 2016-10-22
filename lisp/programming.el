@@ -56,7 +56,8 @@
 
 ;(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
 ;(add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function)
-
+(require 'github)
 (require 'editorconfig)
+(editorconfig-mode 1)
 
 (provide 'programming)
