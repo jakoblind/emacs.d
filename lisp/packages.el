@@ -51,6 +51,8 @@
    smart-mode-line
    f
    flycheck
+   vue-mode
+   toggle-quotes
 ))
 
 (defun install-wanted-packages ()
