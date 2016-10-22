@@ -12,6 +12,8 @@
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode))
 
+(add-to-list 'auto-mode-alist '("\\.vue$" . vue-mode))
+
 ;;enable auto complete mode in jsx mode
 (add-to-list 'ac-modes 'js2-jsx-mode)
 
