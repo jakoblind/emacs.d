@@ -53,6 +53,7 @@
    flycheck
    vue-mode
    toggle-quotes
+   js-import
 ))
 
 (defun install-wanted-packages ()

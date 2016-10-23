@@ -31,39 +31,6 @@
 (require 'subr-x)
 (require 'projectile)
 
-(defun js/get-project-dependencies ()
-  (let ((json-object-type 'hash-table))
-    (hash-table-keys
-     (gethash "dependencies"
-              (json-read-from-string (f-read-text (concat (projectile-project-root) "package.json") 'utf-8))))))
-
-(defun string-ends-with-p (string suffix)
-  "Return t if STRING ends with SUFFIX."
-  (and (string-match (rx-to-string `(: ,suffix eos) t)
-                     string)
-       t))
-
-(defun js/is-js-file (file)
-  (or (string-ends-with-p file ".js") (string-ends-with-p file ".jsx")))
-
-(defun js/import ()
-  (interactive)
-  (let* ((filtered-project-files
-          (-filter 'js/is-js-file (projectile-current-project-files)))
-         (all (append (js/get-project-dependencies) filtered-project-files))
-         (selected-file (ido-completing-read "Select a file to import: " all))
-         (selected-file-name (f-filename (f-no-ext selected-file)))
-         (selected-file-relative-path
-          (f-relative
-           (concat (projectile-project-root) (f-no-ext selected-file))
-           (file-name-directory (buffer-file-name)))))
-    (insert (concat
-             "import "
-             selected-file-name
-             " from \""
-             (if (js/is-js-file selected-file) (concat "./" selected-file-relative-path) selected-file-name)
-             "\";"))))
-
 (defun js/console-log ()
   "List all variables in the file, and console log the selected one"
   ;TODO: only show variables in scope at cursor point
