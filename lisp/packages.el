@@ -54,6 +54,7 @@
    vue-mode
    toggle-quotes
    js-import
+   org-journal
 ))
 
 (defun install-wanted-packages ()
