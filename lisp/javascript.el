@@ -63,16 +63,12 @@
 ;; add a semicolon at end of line with M-; in js2-mode
 (eval-after-load 'js2-mode
   '(progn
-     (define-key js2-mode-map (kbd "C-x C-e") 'nodejs-repl-eval-dwim)
+     (define-key js2-mode-map (kbd "C-c C-j") 'nil)
      (define-key js2-mode-map (kbd "M-j") 'nil)
      (define-key js2-mode-map (kbd "M-R") 'js2r-rename-var)
      (define-key js2-mode-map (kbd "M-/") 'comment-region)
      (define-key js2-mode-map (kbd "M-S-<down>") 'js2r-move-line-down)
-     (define-key js2-mode-map (kbd "M-S-<up>") 'js2r-move-line-up)
-     (define-key js2-mode-map (kbd "M-m") 'web-mode)
-     (define-key js2-mode-map (kbd "M-S-<backspace>") '(lambda () (interactive) (run-at-end-of-line '(lambda () (backward-char) (delete-char 1)))))
-     (define-key js2-mode-map (kbd "M-;") '(lambda () (interactive) (run-at-end-of-line '(lambda () (insert ";")))))
-     (define-key js2-mode-map (kbd "M-,") '(lambda () (interactive) (run-at-end-of-line '(lambda () (insert ",")))))))
+     (define-key js2-mode-map (kbd "M-S-<up>") 'js2r-move-line-up)))
 
 (eval-after-load 'autoinsert
   '(define-auto-insert
