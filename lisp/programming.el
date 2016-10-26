@@ -22,6 +22,10 @@
 (setq magit-push-always-verify nil)
 (global-set-key (kbd "C-c s") 'magit-status)
 
+;; Make magit never ask for a stash message. Instead always use default.
+(defun magit-stash-read-message ()
+  (concat (format "On %s: " (or (magit-get-current-branch) "(no branch)")) (magit-rev-format "%h %s")))
+
 ;; try to make magit faster
 (setq magit-refresh-status-buffer nil)
 (remove-hook 'server-switch-hook 'magit-commit-diff) ;dont show diff on commit
