@@ -25,10 +25,12 @@
 
 ;; try to make magit faster
 (setq magit-refresh-status-buffer nil)
-(remove-hook 'server-switch-hook 'magit-commit-diff) ;dont show diff on commit
+
 
 (eval-after-load "magit"
   (lambda () (interactive) (progn
+                        (remove-hook 'server-switch-hook 'magit-commit-diff) ;dont show diff on commit
+                        (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
                         (defun git-commit-check-style-conventions (force) t) ;dont ask if commit message is too long. i already know) )
 
                         ;; Make magit never ask for a stash message. Instead always use default.
