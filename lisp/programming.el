@@ -22,15 +22,21 @@
 (setq magit-push-always-verify nil)
 (global-set-key (kbd "C-c s") 'magit-status)
 
-;; Make magit never ask for a stash message. Instead always use default.
-(defun magit-stash-read-message ()
-  (concat (format "On %s: " (or (magit-get-current-branch) "(no branch)")) (magit-rev-format "%h %s")))
 
 ;; try to make magit faster
 (setq magit-refresh-status-buffer nil)
 (remove-hook 'server-switch-hook 'magit-commit-diff) ;dont show diff on commit
 
-(defun git-commit-check-style-conventions () t) ;dont ask if commit message is too long. i already know
+(eval-after-load "magit"
+  (lambda () (interactive) (progn
+                        (defun git-commit-check-style-conventions (force) t) ;dont ask if commit message is too long. i already know) )
+
+                        ;; Make magit never ask for a stash message. Instead always use default.
+                        (defun magit-stash-read-message ()
+                          (concat (format "On %s: " (or (magit-get-current-branch) "(no branch)")) (magit-rev-format "%h %s")))
+
+                        )))
+
 (setq magit-completing-read-function
     'magit-ido-completing-read) ; use ido in magit
 
