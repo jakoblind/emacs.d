@@ -35,6 +35,8 @@
 ;;      (tern-ac-setup)))
 
 (require 'js2-refactor)
+(add-to-list 'load-path "~/.emacs.d/js2r-es6")
+(require 'js2r-es6)
 (add-hook 'js-mode-hook #'js2-refactor-mode)
 (add-hook 'js-mode-hook #'flycheck-mode)
 (add-hook 'js-mode-hook 'auto-insert-mode)

@@ -1,3 +1,6 @@
 [submodule "es6-snippets"]
-	path = es6-snippets
-	url = https://github.com/CodyReichert/es6-snippets.git
+        path = es6-snippets
+        url = https://github.com/CodyReichert/es6-snippets.git
+[submodule "js2-res6"]
+        path = js2r-es6
+        url = https://github.com/jakoblind/js2r-es6
