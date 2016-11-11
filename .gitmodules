@@ -4,3 +4,6 @@
 [submodule "js2-res6"]
         path = js2r-es6
         url = https://github.com/jakoblind/js2r-es6
+[submodule "github-pullrequest"]
+	path = github-pullrequest
+	url = https://github.com/jakoblind/github-pullrequest.git
