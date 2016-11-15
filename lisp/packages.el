@@ -56,6 +56,7 @@
    js-import
    org-journal
    ack
+   ag
 ))
 
 (defun install-wanted-packages ()
