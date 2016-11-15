@@ -10,6 +10,9 @@ $ git submodule update
 $ ln -s ~/dev/emacs.d ~/.emacs.d
 ```
 
+* Install source code pro font.
+* Install [The silver searcher](https://github.com/ggreer/the_silver_searcher)
+
 ## Overview
 
 ### Blogposts
