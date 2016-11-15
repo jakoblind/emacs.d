@@ -55,6 +55,7 @@
    toggle-quotes
    js-import
    org-journal
+   ack
 ))
 
 (defun install-wanted-packages ()
