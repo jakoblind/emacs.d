@@ -206,6 +206,15 @@
 (require 'macros)
 
 (require 'orgmode-config)
+
+;; Packages fetch from github submodule
+(add-to-list 'load-path "~/.emacs.d/js2r-es6")
+(require 'js2r-es6)
+(add-to-list 'load-path "~/.emacs.d/es6-snippets")
+(require 'es6-snippets)
+(add-to-list 'load-path "~/.emacs.d/github-pullrequest")
+(require 'github-pullrequest)
+
 (server-start)
 
 (custom-set-variables
