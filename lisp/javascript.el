@@ -44,13 +44,24 @@
 
 (require 'flycheck)
 
-(defun my/use-eslint-from-node-modules ()
+(defun eslint-get-local-path ()
   (let* ((root (locate-dominating-file
                 (or (buffer-file-name) default-directory)
-                "node_modules"))
-         (eslint (and root
-                      (expand-file-name "node_modules/eslint/bin/eslint.js"
-                                        root))))
+                "node_modules")))
+    (and root
+         (expand-file-name "node_modules/eslint/bin/eslint.js"
+                           root))))
+(defun eslint-fix ()
+  "Format the current file with ESLint."
+  (interactive)
+  (let ((eslint (eslint-get-local-path)))
+    (if (executable-find eslint)
+        (progn (call-process eslint nil "*ESLint Errors*" nil "--fix" buffer-file-name)
+               (revert-buffer t t t))
+      (message "ESLint not found."))))
+
+(defun my/use-eslint-from-node-modules ()
+  (let ((eslint (eslint-get-local-path)))
     (when (and eslint (file-executable-p eslint))
       (setq-local flycheck-javascript-eslint-executable eslint))))
 
