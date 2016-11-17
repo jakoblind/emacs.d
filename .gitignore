@@ -20,3 +20,5 @@ projectile.cache
 .cask
 games
 url
+session.*
+network-security.data
