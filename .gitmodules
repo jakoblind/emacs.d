@@ -7,3 +7,6 @@
 [submodule "github-pullrequest"]
         path = github-pullrequest
         url = https://github.com/jakoblind/github-pullrequest.git
+[submodule "emacs-flycheck-flow"]
+	path = emacs-flycheck-flow
+	url = https://github.com/lbolla/emacs-flycheck-flow.git
