@@ -89,17 +89,17 @@
        "import React from 'react';" \n
        "import _ from 'lodash';" \n
        "" \n
-       "var "
+       "class "
        (first (split-string (file-name-nondirectory (buffer-file-name)) "\\."))
-       " = React.createClass({" \n
+       " extends React.Component {" \n
        "render() {" \n
        "return (<div>"
        > _
        "</div>);" \n
        "}" \n
-       "});" \n
+       "}" \n
        "" \n
-       "module.exports = "
+       "export default "
        (first (split-string (file-name-nondirectory (buffer-file-name)) "\\."))
        ";" \n)))
 
