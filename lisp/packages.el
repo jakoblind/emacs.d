@@ -5,7 +5,6 @@
    nodejs-repl
    org2blog
    editorconfig
-   react-snippets
    highlight-symbol
    markdown-mode
    feature-mode
