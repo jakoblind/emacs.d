@@ -34,6 +34,17 @@
         ("j" "Journal" entry (file+datetree "~/org/journal.org")
          "* %?\nEntered on %U\n %i\n")))
 
+(defun insert-heading-and-date ()
+  "insert a org level 1 heading and date"
+  (interactive "")
+  (unwind-protect
+      ;; if we alread are at top level, dont crash
+      (outline-up-heading 4)
+    (progn (org-insert-heading-after-current)
+           (insert-date nil))))
+
+(define-key org-mode-map (kbd "C-u RET") 'insert-heading-and-date)
+
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (defun insert-date (prefix)
