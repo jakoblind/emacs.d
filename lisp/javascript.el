@@ -1,6 +1,6 @@
 (require 'js2-mode)
-(require 'react-snippets)
-
+(setq yas-snippet-dirs (append yas-snippet-dirs
+                               '("~/.emacs.d/Es6-React-Snippets-Emacs/snippets")))
 (add-hook 'js2-mode-hook
             (lambda ()
               (push '("function" . ?λ) prettify-symbols-alist)))

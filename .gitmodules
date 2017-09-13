@@ -10,3 +10,6 @@
 [submodule "emacs-flycheck-flow"]
 	path = emacs-flycheck-flow
 	url = https://github.com/lbolla/emacs-flycheck-flow.git
+[submodule "Es6-React-Snippets-Emacs"]
+	path = Es6-React-Snippets-Emacs
+	url = https://github.com/rparkisoniii/Es6-React-Snippets-Emacs.git
