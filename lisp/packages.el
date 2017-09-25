@@ -53,9 +53,12 @@
    vue-mode
    toggle-quotes
    js-import
+   github-pullrequest
    org-journal
    ack
    ag
+   ido-ubiquitous
+   rjsx-mode
 ))
 
 (defun install-wanted-packages ()
