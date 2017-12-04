@@ -23,5 +23,9 @@
 (eval-after-load "cider"
   '(define-key cider-mode-map (kbd "C-c C-d") 'ac-cider-popup-doc))
 
+(setq cider-cljs-lein-repl
+      "(do (require 'figwheel-sidecar.repl-api)
+           (figwheel-sidecar.repl-api/start-figwheel!)
+           (figwheel-sidecar.repl-api/cljs-repl))")
 
 (provide 'clojure)
