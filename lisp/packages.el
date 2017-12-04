@@ -32,6 +32,7 @@
    smooth-scrolling
    cider
    ac-cider
+   html-to-hiccup
    exec-path-from-shell
    ensime
    noctilux-theme

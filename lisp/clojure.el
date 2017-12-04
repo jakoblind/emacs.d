@@ -2,6 +2,7 @@
 (require 'clj-refactor)
 (require 'cider)
 (require 'ac-cider)
+(require 'html-to-hiccup)
 
 (add-hook 'clojure-mode-hook 'prettify-symbols-mode)
 
