@@ -25,8 +25,8 @@
 ;;; Code:
 
 ;; smart mode line
-(sml/setup)
 (setq sml/theme nil)
+(sml/setup)
 
 ;(load-theme 'noctilux t)
 ;;(disable-theme 'noctilux)
