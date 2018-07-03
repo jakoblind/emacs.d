@@ -27,6 +27,7 @@
    flx
    flx-ido
    magit
+   magit-gitflow
    multiple-cursors
    undo-tree
    smooth-scrolling
