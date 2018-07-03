@@ -29,4 +29,8 @@
            (figwheel-sidecar.repl-api/start-figwheel!)
            (figwheel-sidecar.repl-api/cljs-repl))")
 
+(cljr-add-keybindings-with-prefix "C-c C-r")
+
+(setq clojure-align-forms-automatically t)
+
 (provide 'clojure)
