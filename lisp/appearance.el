@@ -28,7 +28,7 @@
 (sml/setup)
 (setq sml/theme nil)
 
-(load-theme 'noctilux t)
+;(load-theme 'noctilux t)
 ;;(disable-theme 'noctilux)
 
 ;; Increase font size, (and something else?)
