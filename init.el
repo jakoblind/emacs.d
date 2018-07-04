@@ -123,8 +123,6 @@
 
 ;; possible to undo/redo window splitting
 
-(require 'dired+)
-
 (defun create-note (file)
   (interactive "sFilename: ")
   (find-file (concat "/Users/jakoblind/Google Drive/emacsnotes/" file)))
