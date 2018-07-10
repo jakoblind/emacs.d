@@ -93,6 +93,8 @@
 (ido-mode t)
 
 (require 'magit-gitflow)
+(require 'fill-column-indicator)
+;(setq fci-rule-column 45)
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
  ;; Display ido results vertically, rather than horizontally

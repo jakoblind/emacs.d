@@ -49,6 +49,7 @@
    ack-and-a-half
    ido-completing-read+
    smart-mode-line
+   fill-column-indicator
    f
    flycheck
    vue-mode
