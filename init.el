@@ -163,6 +163,7 @@
 (require 'programming)
 (require 'myparedit)
 (require 'javascript)
+(require 'markdown)
 (require 'javascript-utils)
 (require 'clojure)
 ;;(require 'scala)
