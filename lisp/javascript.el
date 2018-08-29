@@ -35,6 +35,11 @@
 ;;      (tern-ac-setup)))
 
 (require 'js2-refactor)
+(require 'prettier-js)
+(eval-after-load 'js2-mode
+    '(progn
+       (add-hook 'js2-mode-hook #'add-node-modules-path)
+       (add-hook 'js2-mode-hook #'prettier-js-mode)))
 
 (add-hook 'js-mode-hook #'js2-refactor-mode)
 (add-hook 'js-mode-hook #'flycheck-mode)
