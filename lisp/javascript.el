@@ -47,6 +47,8 @@
 (add-hook 'js-mode-hook #'flycheck-mode)
 (add-hook 'js-mode-hook 'auto-insert-mode)
 
+(setq js2-skip-preprocessor-directives t)
+
 (js2r-add-keybindings-with-prefix "C-c C-r")
 
 (require 'flycheck)
