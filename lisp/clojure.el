@@ -21,6 +21,7 @@
 (add-hook 'clojure-mode-hook (lambda () (paredit-mode 1)))
 (add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
 
+(setq cider-default-cljs-repl "figwheel")
 (eval-after-load "cider"
   '(define-key cider-mode-map (kbd "C-c C-d") 'ac-cider-popup-doc))
 
