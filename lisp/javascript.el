@@ -36,10 +36,12 @@
 
 (require 'js2-refactor)
 (require 'prettier-js)
+
+;add prettier if .prettierrc exist
 (eval-after-load 'js2-mode
-    '(progn
-       (add-hook 'js2-mode-hook #'add-node-modules-path)
-       (add-hook 'js2-mode-hook #'prettier-js-mode)))
+  '(progn
+     (add-hook 'js2-mode-hook #'add-node-modules-path)
+     (add-hook 'js2-mode-hook (lambda () (when (locate-dominating-file default-directory ".prettierrc") (prettier-js-mode))))))
 
 (add-hook 'js-mode-hook #'js2-refactor-mode)
 (add-hook 'js-mode-hook #'flycheck-mode)
