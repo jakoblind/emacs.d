@@ -13,3 +13,6 @@
 [submodule "Es6-React-Snippets-Emacs"]
 	path = Es6-React-Snippets-Emacs
 	url = https://github.com/rparkisoniii/Es6-React-Snippets-Emacs.git
+[submodule "forge"]
+	path = forge
+	url = https://github.com/magit/forge/
