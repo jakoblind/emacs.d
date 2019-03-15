@@ -11,6 +11,7 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.ts$" . typescript-mode))
 
 (add-to-list 'auto-mode-alist '("\\.vue$" . vue-mode))
 
