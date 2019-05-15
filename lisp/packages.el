@@ -24,6 +24,7 @@
    browse-kill-ring
    paredit
    smex
+   markdown-toc
    ido
    flx
    flx-ido
